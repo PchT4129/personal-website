@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+/* Nav */
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid #eee;
+    z-index: 100;
+}
+
+nav {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+/* Sections */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+#hero {
+    padding-top: 8rem;
+    padding-bottom: 6rem;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: #0066ff;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #0066ff;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* Timeline */
+.timeline {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: baseline;
+}
+
+.year {
+    font-size: 0.85rem;
+    color: #0066ff;
+    font-weight: 600;
+    min-width: 110px;
+    white-space: nowrap;
+}
+
+.event {
+    color: #444;
+    font-size: 0.95rem;
+}
+
+/* Projects */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.project-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: box-shadow 0.2s;
+}
+
+.project-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.card-header h3 {
+    margin: 0;
+}
+
+.badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-fullstack {
+    background: #e8f0ff;
+    color: #0044cc;
+}
+
+.badge-ml {
+    background: #e8fff4;
+    color: #007a40;
+}
+
+.badge-degree {
+    background: #fff4e0;
+    color: #a05c00;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+}
+
+.tag {
+    font-size: 0.78rem;
+    background: #f2f2f2;
+    color: #555;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+}
+
+/* Featured project */
+.project-featured {
+    border: 2px solid #0066ff;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    background: #f7f9ff;
+}
+
+.featured-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #0066ff;
+    margin-bottom: 0.6rem;
+}
+
+.project-featured h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+}
+
+.project-featured p {
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+/* Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.skills-col h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #0066ff;
+    margin-bottom: 0.75rem;
+}
+
+.skills-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.skills-col li {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* Contact */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #444;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.contact-item:hover {
+    color: #0066ff;
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #0066ff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+}

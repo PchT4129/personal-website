@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <span class="logo">YX</span>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>Hi, I'm <span class="highlight">Yixiao Tao</span></h1>
+            <p class="subtitle">MSc Robotics & AI @ UCL &nbsp;·&nbsp; 陶邑潇</p>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I'm from Ningbo, Zhejiang, China. I attended
+                <strong>Ningbo Xiaoshi High School</strong>, then completed my
+                undergraduate degree in <strong>Computer Science and Technology</strong>
+                at <strong>Xiamen University Malaysia</strong>. I'm currently pursuing
+                an <strong>MSc in Robotics and Artificial Intelligence</strong> at
+                <strong>University College London (UCL)</strong>.
+            </p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="year">2016 – 2019</span>
+                    <span class="event">宁波效实中学 &mdash; Ningbo Xiaoshi High School</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2019 – 2023</span>
+                    <span class="event">厦门大学马来西亚分校 &mdash; BSc Computer Science &amp; Technology</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2024 – present</span>
+                    <span class="event">UCL &mdash; MSc Robotics and Artificial Intelligence</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <div class="project-featured">
+                <div class="featured-label">MSc Project · In Progress</div>
+                <h3>SAV-SLAM: Semantic Visual-Audio SLAM</h3>
+                <p>
+                    Exploring how auditory perception can augment visual SLAM systems. The project
+                    integrates audio foundation models alongside SAM (Segment Anything Model) into
+                    a SLAM baseline to enable multimodal scene understanding — moving beyond
+                    purely visual representations toward richer, hearing-aware robot perception.
+                </p>
+                <div class="tags">
+                    <span class="tag">SLAM</span>
+                    <span class="tag">SAM</span>
+                    <span class="tag">Audio Foundation Models</span>
+                    <span class="tag">Multimodal Perception</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">Robotics</span>
+                </div>
+            </div>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="card-header">
+                        <h3>CNN Typhoon Prediction</h3>
+                        <span class="badge badge-ml">ML / CV</span>
+                        <span class="badge badge-degree">Bachelor Project</span>
+                    </div>
+                    <p>Tropical cyclone intensity estimation from satellite imagery. Compares a baseline CNN against a CBAM-enhanced model with channel and spatial attention, trained on 5,573 grayscale images with stratified 5-fold cross-validation. Achieved ~10 knots MAE.</p>
+                    <div class="tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">CNN</span>
+                        <span class="tag">CBAM</span>
+                        <span class="tag">Satellite Imagery</span>
+                        <span class="tag">Regression</span>
+                    </div>
+                    <a href="https://github.com/PchT4129/CNN-typhoon-prediction" target="_blank" rel="noopener" class="card-link">View on GitHub →</a>
+                </div>
+                <div class="project-card">
+                    <div class="card-header">
+                        <h3>Trajectory AI Platform</h3>
+                        <span class="badge badge-fullstack">Full-Stack</span>
+                    </div>
+                    <p>A full-stack web platform for trajectory data management and AI-powered analysis. Built with a React + TypeScript frontend, FastAPI backend, Celery for async task processing, and Docker for containerised deployment.</p>
+                    <div class="tags">
+                        <span class="tag">React</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Celery</span>
+                        <span class="tag">Docker</span>
+                    </div>
+                    <a href="https://github.com/PchT4129/trajectory-ai-platform" target="_blank" rel="noopener" class="card-link">View on GitHub →</a>
+                </div>
+                <div class="project-card">
+                    <div class="card-header">
+                        <h3>VPR Loop Closure</h3>
+                        <span class="badge badge-ml">ML / Robotics</span>
+                    </div>
+                    <p>A Visual Place Recognition pipeline in PyTorch for loop closure and relocalization in SLAM. Uses a pretrained ResNet18 backbone to extract 512-D global image descriptors, retrieved via cosine similarity.</p>
+                    <div class="tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">ResNet18</span>
+                        <span class="tag">SLAM</span>
+                        <span class="tag">Computer Vision</span>
+                    </div>
+                    <a href="https://github.com/PchT4129/vpr-loop-closure" target="_blank" rel="noopener" class="card-link">View on GitHub →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills &amp; Interests</h2>
+            <div class="skills-grid">
+                <div class="skills-col">
+                    <h4>Languages</h4>
+                    <ul>
+                        <li>Python</li>
+                        <li>TypeScript / JavaScript</li>
+                        <li>C++</li>
+                    </ul>
+                </div>
+                <div class="skills-col">
+                    <h4>ML / Robotics</h4>
+                    <ul>
+                        <li>PyTorch</li>
+                        <li>SLAM &amp; Visual Odometry</li>
+                        <li>Visual Place Recognition</li>
+                        <li>Multimodal Perception</li>
+                    </ul>
+                </div>
+                <div class="skills-col">
+                    <h4>Full-Stack</h4>
+                    <ul>
+                        <li>React + FastAPI</li>
+                        <li>Docker &amp; Celery</li>
+                        <li>REST API Design</li>
+                    </ul>
+                </div>
+                <div class="skills-col">
+                    <h4>Research Interests</h4>
+                    <ul>
+                        <li>Semantic SLAM</li>
+                        <li>Audio-Visual Learning</li>
+                        <li>Robot Scene Understanding</li>
+                        <li>Foundation Models for Robotics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-links">
+                <a href="mailto:i@yixiao-tao.com" class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    i@yixiao-tao.com
+                </a>
+                <a href="https://github.com/PchT4129" target="_blank" rel="noopener" class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    github.com/PchT4129
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Yixiao</p>
+    </footer>
+</body>
+</html>
