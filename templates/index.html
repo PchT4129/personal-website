@@ -143,31 +143,6 @@
             <h2>Cities</h2>
             <p class="section-sub">98 cities · 23 countries & territories · 6 continents — and counting.</p>
             <div id="map"></div>
-            <div class="flag-row" id="flag-row">
-                <span class="flag-item fi fi-gb" title="United Kingdom"   data-lat="54.5"  data-lng="-3.5"   data-zoom="5"></span>
-                <span class="flag-item fi fi-fr" title="France"           data-lat="46.5"  data-lng="2.5"    data-zoom="5"></span>
-                <span class="flag-item fi fi-es" title="Spain"            data-lat="40.4"  data-lng="-3.7"   data-zoom="5"></span>
-                <span class="flag-item fi fi-it" title="Italy"            data-lat="42.5"  data-lng="12.5"   data-zoom="5"></span>
-                <span class="flag-item fi fi-cz" title="Czech Republic"   data-lat="49.8"  data-lng="15.5"   data-zoom="6"></span>
-                <span class="flag-item fi fi-hu" title="Hungary"          data-lat="47.2"  data-lng="19.4"   data-zoom="6"></span>
-                <span class="flag-item fi fi-at" title="Austria"          data-lat="47.5"  data-lng="14.5"   data-zoom="6"></span>
-                <span class="flag-item fi fi-dk" title="Denmark"          data-lat="56.0"  data-lng="10.5"   data-zoom="6"></span>
-                <span class="flag-item fi fi-se" title="Sweden"           data-lat="62.0"  data-lng="16.0"   data-zoom="5"></span>
-                <span class="flag-item fi fi-no" title="Norway"           data-lat="65.0"  data-lng="14.0"   data-zoom="4"></span>
-                <span class="flag-item fi fi-ae" title="UAE"              data-lat="24.0"  data-lng="54.0"   data-zoom="7"></span>
-                <span class="flag-item fi fi-cn" title="China"            data-lat="35.0"  data-lng="105.0"  data-zoom="4"></span>
-                <span class="flag-item fi fi-hk" title="Hong Kong"        data-lat="22.35" data-lng="114.15" data-zoom="10"></span>
-                <span class="flag-item fi fi-mo" title="Macau"            data-lat="22.20" data-lng="113.55" data-zoom="12"></span>
-                <span class="flag-item fi fi-tw" title="Taiwan"           data-lat="23.7"  data-lng="121.0"  data-zoom="7"></span>
-                <span class="flag-item fi fi-jp" title="Japan"            data-lat="37.0"  data-lng="137.0"  data-zoom="5"></span>
-                <span class="flag-item fi fi-kr" title="South Korea"      data-lat="36.5"  data-lng="127.5"  data-zoom="7"></span>
-                <span class="flag-item fi fi-vn" title="Vietnam"          data-lat="14.0"  data-lng="108.0"  data-zoom="5"></span>
-                <span class="flag-item fi fi-th" title="Thailand"         data-lat="13.0"  data-lng="101.0"  data-zoom="5"></span>
-                <span class="flag-item fi fi-my" title="Malaysia"         data-lat="4.5"   data-lng="109.0"  data-zoom="5"></span>
-                <span class="flag-item fi fi-sg" title="Singapore"        data-lat="1.35"  data-lng="103.82" data-zoom="11"></span>
-                <span class="flag-item fi fi-id" title="Indonesia"        data-lat="1.07"  data-lng="104.5"  data-zoom="8"></span>
-                <span class="flag-item fi fi-au" title="Australia"        data-lat="-33.0" data-lng="147.0"  data-zoom="5"></span>
-            </div>
             <div id="city-list"></div>
         </section>
 
@@ -405,19 +380,7 @@
             }
         });
 
-        // 点击国旗飞到对应国家
-        document.getElementById('flag-row').addEventListener('click', e => {
-            const flag = e.target.closest('.flag-item');
-            if (!flag) return;
-            const lat  = parseFloat(flag.dataset.lat);
-            const lng  = parseFloat(flag.dataset.lng);
-            const zoom = parseInt(flag.dataset.zoom);
-            map.flyTo([lat, lng], zoom, { duration: 1.2 });
-            document.querySelectorAll('.flag-item').forEach(f => f.classList.remove('flag-active'));
-            flag.classList.add('flag-active');
-        });
-
-        // 深色模式切换时同步地图 tiles
+// 深色模式切换时同步地图 tiles
         document.getElementById('theme-toggle').addEventListener('click', () => {
             const isDark = document.documentElement.classList.contains('dark');
             map.removeLayer(tileLayer);
