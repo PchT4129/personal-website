@@ -1,3 +1,52 @@
+:root {
+    --bg: #ffffff;
+    --bg-nav: rgba(255, 255, 255, 0.95);
+    --bg-card: #ffffff;
+    --bg-featured: #f7f9ff;
+    --bg-tag: #f2f2f2;
+    --text: #1a1a1a;
+    --text-muted: #555;
+    --text-subtle: #666;
+    --text-faint: #999;
+    --text-body: #444;
+    --border: #eee;
+    --border-card: #e0e0e0;
+    --accent: #0066ff;
+    --accent-hover: #0044cc;
+    --badge-fullstack-bg: #e8f0ff;
+    --badge-fullstack-text: #0044cc;
+    --badge-ml-bg: #e8fff4;
+    --badge-ml-text: #007a40;
+    --badge-degree-bg: #fff4e0;
+    --badge-degree-text: #a05c00;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+html.dark {
+    --bg: #111111;
+    --bg-nav: rgba(17, 17, 17, 0.95);
+    --bg-card: #1a1a1a;
+    --bg-featured: #0d1a33;
+    --bg-tag: #2a2a2a;
+    --text: #e8e8e8;
+    --text-muted: #aaa;
+    --text-subtle: #888;
+    --text-faint: #555;
+    --text-body: #bbb;
+    --border: #2a2a2a;
+    --border-card: #333;
+    --accent: #4d94ff;
+    --accent-hover: #80b3ff;
+    --badge-fullstack-bg: #0d1a33;
+    --badge-fullstack-text: #80b3ff;
+    --badge-ml-bg: #0d2b1a;
+    --badge-ml-text: #4dbb87;
+    --badge-degree-bg: #2b1d00;
+    --badge-degree-text: #ffaa44;
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,17 +55,21 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: #1a1a1a;
+    color: var(--text);
+    background: var(--bg);
     line-height: 1.6;
+    transition: var(--transition);
 }
 
 /* Nav */
 header {
     position: sticky;
     top: 0;
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid #eee;
+    background: var(--bg-nav);
+    border-bottom: 1px solid var(--border);
     z-index: 100;
+    backdrop-filter: blur(8px);
+    transition: var(--transition);
 }
 
 nav {
@@ -37,16 +90,36 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 nav a {
     text-decoration: none;
-    color: #555;
+    color: var(--text-muted);
     font-size: 0.95rem;
+    transition: color 0.2s;
 }
 
 nav a:hover {
-    color: #000;
+    color: var(--text);
+}
+
+/* Dark mode toggle */
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border-card);
+    border-radius: 6px;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+#theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 /* Sections */
@@ -72,18 +145,18 @@ h1 {
 }
 
 .highlight {
-    color: #0066ff;
+    color: var(--accent);
 }
 
 .subtitle {
     font-size: 1.2rem;
-    color: #666;
+    color: var(--text-subtle);
 }
 
 h2 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid #0066ff;
+    border-bottom: 2px solid var(--accent);
     padding-bottom: 0.5rem;
     display: inline-block;
 }
@@ -99,19 +172,19 @@ h2 {
 .timeline-item {
     display: flex;
     gap: 1.5rem;
-    align-items: baseline;
+    align-items: center;
 }
 
 .year {
     font-size: 0.85rem;
-    color: #0066ff;
+    color: var(--accent);
     font-weight: 600;
     min-width: 110px;
     white-space: nowrap;
 }
 
 .event {
-    color: #444;
+    color: var(--text-body);
     font-size: 0.95rem;
 }
 
@@ -131,14 +204,15 @@ h2 {
 }
 
 .project-card {
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border-card);
     border-radius: 8px;
     padding: 1.5rem;
-    transition: box-shadow 0.2s;
+    background: var(--bg-card);
+    transition: box-shadow 0.2s, var(--transition);
 }
 
 .project-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--shadow);
 }
 
 .card-header {
@@ -163,18 +237,18 @@ h2 {
 }
 
 .badge-fullstack {
-    background: #e8f0ff;
-    color: #0044cc;
+    background: var(--badge-fullstack-bg);
+    color: var(--badge-fullstack-text);
 }
 
 .badge-ml {
-    background: #e8fff4;
-    color: #007a40;
+    background: var(--badge-ml-bg);
+    color: var(--badge-ml-text);
 }
 
 .badge-degree {
-    background: #fff4e0;
-    color: #a05c00;
+    background: var(--badge-degree-bg);
+    color: var(--badge-degree-text);
 }
 
 .tags {
@@ -186,20 +260,21 @@ h2 {
 
 .tag {
     font-size: 0.78rem;
-    background: #f2f2f2;
-    color: #555;
+    background: var(--bg-tag);
+    color: var(--text-muted);
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
+    transition: var(--transition);
 }
 
 /* Featured project */
 .project-featured {
-    border: 2px solid #0066ff;
+    border: 2px solid var(--accent);
     border-radius: 10px;
     padding: 2rem;
     margin-bottom: 2rem;
-    position: relative;
-    background: #f7f9ff;
+    background: var(--bg-featured);
+    transition: var(--transition);
 }
 
 .featured-label {
@@ -207,7 +282,7 @@ h2 {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #0066ff;
+    color: var(--accent);
     margin-bottom: 0.6rem;
 }
 
@@ -217,9 +292,8 @@ h2 {
 }
 
 .project-featured p {
-    color: #444;
+    color: var(--text-body);
     line-height: 1.7;
-    margin-bottom: 0;
 }
 
 /* Skills */
@@ -234,7 +308,7 @@ h2 {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: #0066ff;
+    color: var(--accent);
     margin-bottom: 0.75rem;
 }
 
@@ -247,7 +321,7 @@ h2 {
 
 .skills-col li {
     font-size: 0.95rem;
-    color: #444;
+    color: var(--text-body);
 }
 
 /* Contact */
@@ -262,21 +336,21 @@ h2 {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    color: #444;
+    color: var(--text-body);
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.2s;
 }
 
 .contact-item:hover {
-    color: #0066ff;
+    color: var(--accent);
 }
 
 .card-link {
     display: inline-block;
     margin-top: 1rem;
     font-size: 0.85rem;
-    color: #0066ff;
+    color: var(--accent);
     text-decoration: none;
     font-weight: 500;
 }
@@ -289,7 +363,8 @@ h2 {
 footer {
     text-align: center;
     padding: 2rem;
-    color: #999;
+    color: var(--text-faint);
     font-size: 0.9rem;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border);
+    transition: var(--transition);
 }
