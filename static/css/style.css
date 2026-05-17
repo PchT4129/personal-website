@@ -366,6 +366,20 @@ html.dark .school-logo {
     line-height: 1.7;
 }
 
+/* Cities map */
+.section-sub {
+    color: var(--text-subtle);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+#map {
+    height: 420px;
+    border-radius: 10px;
+    border: 1px solid var(--border-card);
+    overflow: hidden;
+}
+
 /* Skills */
 .skills-grid {
     display: grid;
