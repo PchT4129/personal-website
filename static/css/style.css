@@ -211,14 +211,6 @@ html.dark .school-logo {
     height: 18px;
 }
 
-.school-logo--white-bg {
-    mix-blend-mode: multiply;
-}
-
-html.dark .school-logo--white-bg {
-    mix-blend-mode: normal;
-    filter: invert(1);
-}
 
 /* Projects */
 .project-grid {
