@@ -388,14 +388,16 @@ html.dark .school-logo {
 }
 
 .flag-item {
-    font-size: 1.6rem;
+    width: 2rem;
+    height: 1.5rem;
     cursor: default;
     transition: transform 0.15s;
-    line-height: 1;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px var(--shadow);
 }
 
 .flag-item:hover {
-    transform: scale(1.3);
+    transform: scale(1.25);
 }
 
 /* Skills */
