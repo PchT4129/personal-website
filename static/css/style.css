@@ -423,6 +423,104 @@ html.dark .school-logo {
     border-radius: 3px;
 }
 
+/* City list accordion */
+#city-list {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.5rem;
+}
+
+.cl-section {
+    border: 1px solid var(--border-card);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.cl-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+    text-align: left;
+    transition: background 0.15s;
+}
+
+.cl-header:hover {
+    background: var(--bg-tag);
+}
+
+.cl-flag {
+    width: 1.4rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+    border-radius: 2px;
+}
+
+.cl-country {
+    flex: 1;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.cl-count {
+    font-size: 0.78rem;
+    color: var(--text-subtle);
+}
+
+.cl-arrow {
+    font-size: 1rem;
+    color: var(--text-subtle);
+    transition: transform 0.2s;
+}
+
+.cl-section.cl-open .cl-arrow {
+    transform: rotate(90deg);
+}
+
+.cl-body {
+    display: none;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.6rem 1rem 0.8rem;
+    border-top: 1px solid var(--border);
+}
+
+.cl-section.cl-open .cl-body {
+    display: flex;
+}
+
+.cl-city {
+    font-size: 0.82rem;
+    color: var(--text-body);
+    cursor: pointer;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: var(--bg-tag);
+    transition: background 0.15s, color 0.15s;
+}
+
+.cl-city:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.cl-city em {
+    font-style: normal;
+    color: var(--text-subtle);
+    font-size: 0.75rem;
+}
+
+.cl-city:hover em {
+    color: rgba(255,255,255,0.8);
+}
+
 /* Skills */
 .skills-grid {
     display: grid;

@@ -168,6 +168,7 @@
                 <span class="flag-item fi fi-id" title="Indonesia"        data-lat="1.07"  data-lng="104.5"  data-zoom="8"></span>
                 <span class="flag-item fi fi-au" title="Australia"        data-lat="-33.0" data-lng="147.0"  data-zoom="5"></span>
             </div>
+            <div id="city-list"></div>
         </section>
 
         <section id="skills" class="fade-up">
@@ -243,104 +244,104 @@
 
     <script>
         const cities = [
-            { name: "London",          lat: 51.5074,  lng: -0.1278,   note: "Home · UCL" },
-            { name: "Edinburgh",       lat: 55.9533,  lng: -3.1883,   note: "Scotland" },
-            { name: "Glasgow",         lat: 55.8642,  lng: -4.2518,   note: "Scotland" },
-            { name: "Bristol",         lat: 51.4545,  lng: -2.5879,   note: "England" },
-            { name: "Eastbourne",      lat: 50.7692,  lng:   0.2799,  note: "England · Seven Sisters" },
-            { name: "Oxford",          lat: 51.7520,  lng: -1.2577,   note: "England" },
-            { name: "Cambridge",       lat: 52.2053,  lng:  0.1218,   note: "England" },
-            { name: "York",            lat: 53.9600,  lng: -1.0873,   note: "England" },
-            { name: "Bath",            lat: 51.3811,  lng: -2.3590,   note: "England" },
-            { name: "Manchester",      lat: 53.4808,  lng: -2.2426,   note: "England" },
-            { name: "Liverpool",       lat: 53.4084,  lng: -2.9916,   note: "England" },
-            { name: "Paris",           lat: 48.8566,  lng:  2.3522,   note: "France" },
-            { name: "Barcelona",       lat: 41.3851,  lng:  2.1734,   note: "Spain" },
-            { name: "Budapest",        lat: 47.4979,  lng: 19.0402,   note: "Hungary" },
-            { name: "Prague",          lat: 50.0755,  lng: 14.4378,   note: "Czech Republic" },
-            { name: "Vienna",          lat: 48.2082,  lng: 16.3738,   note: "Austria" },
-            { name: "Rome",            lat: 41.9028,  lng: 12.4964,   note: "Italy" },
-            { name: "Milan",           lat: 45.4642,  lng:  9.1900,   note: "Italy" },
-            { name: "Copenhagen",      lat: 55.6761,  lng: 12.5683,   note: "Denmark" },
-            { name: "Malmö",           lat: 55.6050,  lng: 13.0038,   note: "Sweden" },
-            { name: "Tromsø",          lat: 69.6492,  lng: 18.9553,   note: "Norway" },
-            { name: "Lofoten Islands", lat: 68.1500,  lng: 14.0000,   note: "Norway · full road trip" },
-            { name: "Tokyo",           lat: 35.6762,  lng: 139.6503,  note: "Japan" },
-            { name: "Osaka",           lat: 34.6937,  lng: 135.5023,  note: "Japan" },
-            { name: "Sapporo",         lat: 43.0618,  lng: 141.3545,  note: "Japan" },
-            { name: "Otaru",           lat: 43.1907,  lng: 140.9947,  note: "Japan" },
-            { name: "Kyoto",           lat: 35.0116,  lng: 135.7681,  note: "Japan" },
-            { name: "Kobe",            lat: 34.6901,  lng: 135.1956,  note: "Japan" },
-            { name: "Nara",            lat: 34.6851,  lng: 135.8048,  note: "Japan" },
-            { name: "Hiroshima",       lat: 34.3853,  lng: 132.4553,  note: "Japan" },
-            { name: "Fukuoka",         lat: 33.5904,  lng: 130.4017,  note: "Japan" },
-            { name: "Kumamoto",        lat: 32.8031,  lng: 130.7079,  note: "Japan" },
-            { name: "Kagoshima",       lat: 31.5966,  lng: 130.5571,  note: "Japan" },
-            { name: "Oita",            lat: 33.2382,  lng: 131.6126,  note: "Japan" },
-            { name: "Naha",            lat: 26.2124,  lng: 127.6809,  note: "Japan · Okinawa" },
-            { name: "Hong Kong",       lat: 22.3193,  lng: 114.1694,  note: "China" },
-            { name: "Shanghai",        lat: 31.2304,  lng: 121.4737,  note: "China" },
-            { name: "Ningbo",          lat: 29.8683,  lng: 121.5440,  note: "Hometown · China" },
-            { name: "Suzhou",          lat: 31.2989,  lng: 120.5853,  note: "China" },
-            { name: "Hangzhou",        lat: 30.2741,  lng: 120.1551,  note: "China" },
-            { name: "Shaoxing",        lat: 30.0300,  lng: 120.5800,  note: "China" },
-            { name: "Huzhou",          lat: 30.8700,  lng: 120.0900,  note: "China" },
-            { name: "Wenzhou",         lat: 28.0000,  lng: 120.6720,  note: "China" },
-            { name: "Nanjing",         lat: 32.0603,  lng: 118.7969,  note: "China" },
-            { name: "Wuhan",           lat: 30.5928,  lng: 114.3055,  note: "China" },
-            { name: "Changsha",        lat: 28.2278,  lng: 112.9388,  note: "China" },
-            { name: "Fenghuang",       lat: 27.9440,  lng: 109.5990,  note: "China · Hunan" },
-            { name: "Guangzhou",       lat: 23.1291,  lng: 113.2644,  note: "China" },
-            { name: "Shenzhen",        lat: 22.5431,  lng: 114.0579,  note: "China" },
-            { name: "Zhuhai",          lat: 22.2710,  lng: 113.5767,  note: "China" },
-            { name: "Macau",           lat: 22.1987,  lng: 113.5439,  note: "China" },
-            { name: "Zhangzhou",       lat: 24.5132,  lng: 117.6471,  note: "China" },
-            { name: "Guilin",          lat: 25.2810,  lng: 110.2900,  note: "China" },
-            { name: "Kunming",         lat: 24.8801,  lng: 102.8329,  note: "China" },
-            { name: "Lijiang",         lat: 26.8721,  lng: 100.2299,  note: "China" },
-            { name: "Sanya",           lat: 18.2524,  lng: 109.5120,  note: "China · Hainan" },
-            { name: "Haikou",          lat: 20.0440,  lng: 110.3419,  note: "China · Hainan" },
-            { name: "Wuzhishan",       lat: 18.7749,  lng: 109.5163,  note: "China · Hainan" },
-            { name: "Chaozhou",        lat: 23.6566,  lng: 116.6225,  note: "China · Guangdong" },
-            { name: "Shantou",         lat: 23.3541,  lng: 116.6820,  note: "China · Guangdong" },
-            { name: "Zhangjiajie",     lat: 29.1166,  lng: 110.4791,  note: "China" },
-            { name: "Beijing",         lat: 39.9042,  lng: 116.4074,  note: "China" },
-            { name: "Qingdao",         lat: 36.0671,  lng: 120.3826,  note: "China" },
-            { name: "Chengdu",         lat: 30.5728,  lng: 104.0668,  note: "China" },
-            { name: "Chongqing",       lat: 29.4316,  lng: 106.9123,  note: "China" },
-            { name: "Jingdezhen",      lat: 29.2693,  lng: 117.2078,  note: "China" },
-            { name: "Quzhou",          lat: 28.9411,  lng: 118.8590,  note: "China" },
-            { name: "Zhoushan",        lat: 29.9853,  lng: 122.2065,  note: "China" },
-            { name: "Jinhua",          lat: 29.0788,  lng: 119.6474,  note: "China" },
-            { name: "Huangshan",       lat: 29.7147,  lng: 118.3374,  note: "China" },
-            { name: "Xiamen",          lat: 24.4798,  lng: 118.0894,  note: "China · XMUMY" },
-            { name: "Xi'an",           lat: 34.3416,  lng: 108.9398,  note: "China" },
-            { name: "Tianjin",         lat: 39.3434,  lng: 117.3616,  note: "China" },
-            { name: "Yichang",         lat: 30.6920,  lng: 111.2864,  note: "China" },
-            { name: "Jiuzhaigou / Huanglong", lat: 33.2620, lng: 103.9170, note: "China · Sichuan" },
-            { name: "Busan",           lat: 35.1796,  lng: 129.0756,  note: "South Korea" },
-            { name: "Jeju",            lat: 33.4996,  lng: 126.5312,  note: "South Korea" },
-            { name: "Kuala Lumpur",    lat:  3.1390,  lng: 101.6869,  note: "Malaysia · XMUMY" },
-            { name: "Penang",          lat:  5.4164,  lng: 100.3327,  note: "Malaysia" },
-            { name: "Langkawi",        lat:  6.3500,  lng:  99.8000,  note: "Malaysia" },
-            { name: "Tioman Island",   lat:  2.8088,  lng: 104.1648,  note: "Malaysia" },
-            { name: "Tenggol Island",  lat:  4.8033,  lng: 103.6711,  note: "Malaysia" },
-            { name: "Kota Kinabalu",   lat:  5.9804,  lng: 116.0735,  note: "Malaysia · Borneo" },
-            { name: "Semporna",        lat:  4.4783,  lng: 118.6069,  note: "Malaysia · Borneo" },
-            { name: "Singapore",       lat:  1.3521,  lng: 103.8198,  note: "Singapore" },
-            { name: "Bangkok",         lat: 13.7563,  lng: 100.5018,  note: "Thailand" },
-            { name: "Koh Samui",       lat:  9.5120,  lng: 100.0136,  note: "Thailand" },
-            { name: "Koh Tao",         lat: 10.0956,  lng:  99.8399,  note: "Thailand" },
-            { name: "Pattaya",         lat: 12.9236,  lng: 100.8825,  note: "Thailand" },
-            { name: "Ho Chi Minh City",lat: 10.8231,  lng: 106.6297,  note: "Vietnam" },
-            { name: "Bintan Island",   lat:  1.0697,  lng: 104.5226,  note: "Indonesia" },
-            { name: "Dubai",           lat: 25.2048,  lng:  55.2708,  note: "UAE" },
-            { name: "Abu Dhabi",       lat: 24.4539,  lng:  54.3773,  note: "UAE" },
-            { name: "Taipei",          lat: 25.0330,  lng: 121.5654,  note: "Taiwan" },
-            { name: "Taichung",        lat: 24.1477,  lng: 120.6736,  note: "Taiwan" },
-            { name: "Kaohsiung",       lat: 22.6273,  lng: 120.3014,  note: "Taiwan" },
-            { name: "Sydney",          lat: -33.8688, lng: 151.2093,  note: "Australia" },
-            { name: "Melbourne",       lat: -37.8136, lng: 144.9631,  note: "Australia" },
+            { name: "London",          lat: 51.5074,  lng: -0.1278,   note: "Home · UCL",       country: "United Kingdom", fi: "gb" },
+            { name: "Edinburgh",       lat: 55.9533,  lng: -3.1883,   note: "Scotland",          country: "United Kingdom", fi: "gb" },
+            { name: "Glasgow",         lat: 55.8642,  lng: -4.2518,   note: "Scotland",          country: "United Kingdom", fi: "gb" },
+            { name: "Bristol",         lat: 51.4545,  lng: -2.5879,   note: "",                  country: "United Kingdom", fi: "gb" },
+            { name: "Oxford",          lat: 51.7520,  lng: -1.2577,   note: "",                  country: "United Kingdom", fi: "gb" },
+            { name: "Cambridge",       lat: 52.2053,  lng:  0.1218,   note: "",                  country: "United Kingdom", fi: "gb" },
+            { name: "York",            lat: 53.9600,  lng: -1.0873,   note: "",                  country: "United Kingdom", fi: "gb" },
+            { name: "Bath",            lat: 51.3811,  lng: -2.3590,   note: "",                  country: "United Kingdom", fi: "gb" },
+            { name: "Manchester",      lat: 53.4808,  lng: -2.2426,   note: "",                  country: "United Kingdom", fi: "gb" },
+            { name: "Liverpool",       lat: 53.4084,  lng: -2.9916,   note: "",                  country: "United Kingdom", fi: "gb" },
+            { name: "Eastbourne",      lat: 50.7692,  lng:  0.2799,   note: "Seven Sisters",     country: "United Kingdom", fi: "gb" },
+            { name: "Paris",           lat: 48.8566,  lng:  2.3522,   note: "",                  country: "France",         fi: "fr" },
+            { name: "Barcelona",       lat: 41.3851,  lng:  2.1734,   note: "",                  country: "Spain",          fi: "es" },
+            { name: "Budapest",        lat: 47.4979,  lng: 19.0402,   note: "",                  country: "Hungary",        fi: "hu" },
+            { name: "Prague",          lat: 50.0755,  lng: 14.4378,   note: "",                  country: "Czech Republic", fi: "cz" },
+            { name: "Vienna",          lat: 48.2082,  lng: 16.3738,   note: "",                  country: "Austria",        fi: "at" },
+            { name: "Rome",            lat: 41.9028,  lng: 12.4964,   note: "",                  country: "Italy",          fi: "it" },
+            { name: "Milan",           lat: 45.4642,  lng:  9.1900,   note: "",                  country: "Italy",          fi: "it" },
+            { name: "Copenhagen",      lat: 55.6761,  lng: 12.5683,   note: "",                  country: "Denmark",        fi: "dk" },
+            { name: "Malmö",           lat: 55.6050,  lng: 13.0038,   note: "",                  country: "Sweden",         fi: "se" },
+            { name: "Tromsø",          lat: 69.6492,  lng: 18.9553,   note: "",                  country: "Norway",         fi: "no" },
+            { name: "Lofoten Islands", lat: 68.1500,  lng: 14.0000,   note: "Full road trip",    country: "Norway",         fi: "no" },
+            { name: "Dubai",           lat: 25.2048,  lng: 55.2708,   note: "",                  country: "UAE",            fi: "ae" },
+            { name: "Abu Dhabi",       lat: 24.4539,  lng: 54.3773,   note: "",                  country: "UAE",            fi: "ae" },
+            { name: "Beijing",         lat: 39.9042,  lng: 116.4074,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Tianjin",         lat: 39.3434,  lng: 117.3616,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Shanghai",        lat: 31.2304,  lng: 121.4737,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Nanjing",         lat: 32.0603,  lng: 118.7969,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Suzhou",          lat: 31.2989,  lng: 120.5853,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Hangzhou",        lat: 30.2741,  lng: 120.1551,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Ningbo",          lat: 29.8683,  lng: 121.5440,  note: "Hometown",          country: "China",          fi: "cn" },
+            { name: "Shaoxing",        lat: 30.0300,  lng: 120.5800,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Huzhou",          lat: 30.8700,  lng: 120.0900,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Zhoushan",        lat: 29.9853,  lng: 122.2065,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Jinhua",          lat: 29.0788,  lng: 119.6474,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Quzhou",          lat: 28.9411,  lng: 118.8590,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Wenzhou",         lat: 28.0000,  lng: 120.6720,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Huangshan",       lat: 29.7147,  lng: 118.3374,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Jingdezhen",      lat: 29.2693,  lng: 117.2078,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Qingdao",         lat: 36.0671,  lng: 120.3826,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Xi'an",           lat: 34.3416,  lng: 108.9398,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Wuhan",           lat: 30.5928,  lng: 114.3055,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Yichang",         lat: 30.6920,  lng: 111.2864,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Changsha",        lat: 28.2278,  lng: 112.9388,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Fenghuang",       lat: 27.9440,  lng: 109.5990,  note: "Xiangxi",           country: "China",          fi: "cn" },
+            { name: "Zhangjiajie",     lat: 29.1166,  lng: 110.4791,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Chengdu",         lat: 30.5728,  lng: 104.0668,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Chongqing",       lat: 29.4316,  lng: 106.9123,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Jiuzhaigou / Huanglong", lat: 33.2620, lng: 103.9170, note: "Sichuan",      country: "China",          fi: "cn" },
+            { name: "Kunming",         lat: 24.8801,  lng: 102.8329,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Lijiang",         lat: 26.8721,  lng: 100.2299,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Guilin",          lat: 25.2810,  lng: 110.2900,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Guangzhou",       lat: 23.1291,  lng: 113.2644,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Shenzhen",        lat: 22.5431,  lng: 114.0579,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Zhuhai",          lat: 22.2710,  lng: 113.5767,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Chaozhou",        lat: 23.6566,  lng: 116.6225,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Shantou",         lat: 23.3541,  lng: 116.6820,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Zhangzhou",       lat: 24.5132,  lng: 117.6471,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Xiamen",          lat: 24.4798,  lng: 118.0894,  note: "XMUMY",             country: "China",          fi: "cn" },
+            { name: "Sanya",           lat: 18.2524,  lng: 109.5120,  note: "Hainan",            country: "China",          fi: "cn" },
+            { name: "Haikou",          lat: 20.0440,  lng: 110.3419,  note: "Hainan",            country: "China",          fi: "cn" },
+            { name: "Wuzhishan",       lat: 18.7749,  lng: 109.5163,  note: "Hainan",            country: "China",          fi: "cn" },
+            { name: "Hong Kong",       lat: 22.3193,  lng: 114.1694,  note: "",                  country: "Hong Kong",      fi: "hk" },
+            { name: "Macau",           lat: 22.1987,  lng: 113.5439,  note: "",                  country: "Macau",          fi: "mo" },
+            { name: "Taipei",          lat: 25.0330,  lng: 121.5654,  note: "",                  country: "Taiwan",         fi: "tw" },
+            { name: "Taichung",        lat: 24.1477,  lng: 120.6736,  note: "",                  country: "Taiwan",         fi: "tw" },
+            { name: "Kaohsiung",       lat: 22.6273,  lng: 120.3014,  note: "",                  country: "Taiwan",         fi: "tw" },
+            { name: "Tokyo",           lat: 35.6762,  lng: 139.6503,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Osaka",           lat: 34.6937,  lng: 135.5023,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Kyoto",           lat: 35.0116,  lng: 135.7681,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Kobe",            lat: 34.6901,  lng: 135.1956,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Nara",            lat: 34.6851,  lng: 135.8048,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Hiroshima",       lat: 34.3853,  lng: 132.4553,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Fukuoka",         lat: 33.5904,  lng: 130.4017,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Kumamoto",        lat: 32.8031,  lng: 130.7079,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Kagoshima",       lat: 31.5966,  lng: 130.5571,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Oita",            lat: 33.2382,  lng: 131.6126,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Sapporo",         lat: 43.0618,  lng: 141.3545,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Otaru",           lat: 43.1907,  lng: 140.9947,  note: "",                  country: "Japan",          fi: "jp" },
+            { name: "Naha",            lat: 26.2124,  lng: 127.6809,  note: "Okinawa",           country: "Japan",          fi: "jp" },
+            { name: "Busan",           lat: 35.1796,  lng: 129.0756,  note: "",                  country: "South Korea",    fi: "kr" },
+            { name: "Jeju",            lat: 33.4996,  lng: 126.5312,  note: "",                  country: "South Korea",    fi: "kr" },
+            { name: "Ho Chi Minh City",lat: 10.8231,  lng: 106.6297,  note: "",                  country: "Vietnam",        fi: "vn" },
+            { name: "Bangkok",         lat: 13.7563,  lng: 100.5018,  note: "",                  country: "Thailand",       fi: "th" },
+            { name: "Pattaya",         lat: 12.9236,  lng: 100.8825,  note: "",                  country: "Thailand",       fi: "th" },
+            { name: "Koh Samui",       lat:  9.5120,  lng: 100.0136,  note: "",                  country: "Thailand",       fi: "th" },
+            { name: "Koh Tao",         lat: 10.0956,  lng:  99.8399,  note: "",                  country: "Thailand",       fi: "th" },
+            { name: "Kuala Lumpur",    lat:  3.1390,  lng: 101.6869,  note: "XMUMY",             country: "Malaysia",       fi: "my" },
+            { name: "Penang",          lat:  5.4164,  lng: 100.3327,  note: "",                  country: "Malaysia",       fi: "my" },
+            { name: "Langkawi",        lat:  6.3500,  lng:  99.8000,  note: "",                  country: "Malaysia",       fi: "my" },
+            { name: "Tioman Island",   lat:  2.8088,  lng: 104.1648,  note: "",                  country: "Malaysia",       fi: "my" },
+            { name: "Tenggol Island",  lat:  4.8033,  lng: 103.6711,  note: "",                  country: "Malaysia",       fi: "my" },
+            { name: "Kota Kinabalu",   lat:  5.9804,  lng: 116.0735,  note: "Borneo",            country: "Malaysia",       fi: "my" },
+            { name: "Semporna",        lat:  4.4783,  lng: 118.6069,  note: "Borneo",            country: "Malaysia",       fi: "my" },
+            { name: "Singapore",       lat:  1.3521,  lng: 103.8198,  note: "",                  country: "Singapore",      fi: "sg" },
+            { name: "Bintan Island",   lat:  1.0697,  lng: 104.5226,  note: "",                  country: "Indonesia",      fi: "id" },
+            { name: "Sydney",          lat: -33.8688, lng: 151.2093,  note: "",                  country: "Australia",      fi: "au" },
+            { name: "Melbourne",       lat: -37.8136, lng: 144.9631,  note: "",                  country: "Australia",      fi: "au" },
         ];
 
         const lightTiles = "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
@@ -364,6 +365,44 @@
             L.marker([c.lat, c.lng], { icon: dotIcon('#0066ff') })
                 .addTo(map)
                 .bindPopup(`<strong>${c.name}</strong><br><span style="color:#888;font-size:0.85em">${c.note}</span>`);
+        });
+
+        // 生成城市列表（按国家折叠）
+        const grouped = {};
+        cities.forEach(c => {
+            if (!grouped[c.country]) grouped[c.country] = { fi: c.fi, cities: [] };
+            grouped[c.country].cities.push(c);
+        });
+
+        const listEl = document.getElementById('city-list');
+        Object.entries(grouped).forEach(([country, data]) => {
+            const section = document.createElement('div');
+            section.className = 'cl-section';
+            section.innerHTML = `
+                <button class="cl-header">
+                    <span class="fi fi-${data.fi} cl-flag"></span>
+                    <span class="cl-country">${country}</span>
+                    <span class="cl-count">${data.cities.length} cities</span>
+                    <span class="cl-arrow">›</span>
+                </button>
+                <div class="cl-body">
+                    ${data.cities.map(c => `
+                        <span class="cl-city" data-lat="${c.lat}" data-lng="${c.lng}">
+                            ${c.name}${c.note ? `<em> · ${c.note}</em>` : ''}
+                        </span>`).join('')}
+                </div>`;
+            listEl.appendChild(section);
+        });
+
+        listEl.addEventListener('click', e => {
+            const header = e.target.closest('.cl-header');
+            const cityEl = e.target.closest('.cl-city');
+            if (header) {
+                header.parentElement.classList.toggle('cl-open');
+            } else if (cityEl) {
+                map.flyTo([+cityEl.dataset.lat, +cityEl.dataset.lng], 10, { duration: 1 });
+                document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         });
 
         // 点击国旗飞到对应国家
