@@ -400,6 +400,13 @@ html.dark .school-logo {
     transform: scale(1.25);
 }
 
+.flag-item.flag-active {
+    transform: scale(1.25);
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
 /* Skills */
 .skills-grid {
     display: grid;
