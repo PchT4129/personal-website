@@ -115,6 +115,13 @@ h2 {
     font-size: 0.95rem;
 }
 
+.school-logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
 /* Projects */
 .project-grid {
     display: grid;
