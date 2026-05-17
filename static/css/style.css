@@ -380,6 +380,24 @@ html.dark .school-logo {
     overflow: hidden;
 }
 
+.flag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+}
+
+.flag-item {
+    font-size: 1.6rem;
+    cursor: default;
+    transition: transform 0.15s;
+    line-height: 1;
+}
+
+.flag-item:hover {
+    transform: scale(1.3);
+}
+
 /* Skills */
 .skills-grid {
     display: grid;
