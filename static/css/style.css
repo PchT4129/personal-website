@@ -200,10 +200,24 @@ h2 {
     height: 28px;
     width: auto;
     object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+html.dark .school-logo {
+    mix-blend-mode: normal;
 }
 
 .school-logo--wide {
     height: 18px;
+}
+
+.school-logo--white-bg {
+    mix-blend-mode: multiply;
+}
+
+html.dark .school-logo--white-bg {
+    mix-blend-mode: normal;
+    filter: invert(1);
 }
 
 /* Projects */
