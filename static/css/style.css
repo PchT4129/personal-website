@@ -188,11 +188,18 @@ h2 {
     font-size: 0.95rem;
 }
 
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    flex-shrink: 0;
+}
+
 .school-logo {
     height: 28px;
     width: auto;
     object-fit: contain;
-    flex-shrink: 0;
 }
 
 .school-logo--wide {
