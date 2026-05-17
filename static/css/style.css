@@ -153,6 +153,27 @@ h1 {
     color: var(--text-subtle);
 }
 
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    flex-shrink: 0;
+    border: 3px solid var(--border-card);
+}
+
 .hero-actions {
     display: flex;
     gap: 1rem;
