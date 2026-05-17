@@ -195,6 +195,10 @@ h2 {
     flex-shrink: 0;
 }
 
+.school-logo--wide {
+    height: 18px;
+}
+
 /* Projects */
 .project-grid {
     display: grid;
