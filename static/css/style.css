@@ -558,6 +558,27 @@ html.dark .school-logo {
     text-decoration: underline;
 }
 
+/* Footprint collapsible toggle */
+.footprint-toggle > summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.footprint-toggle > summary::-webkit-details-marker { display: none; }
+.footprint-toggle > summary h2 { margin-bottom: 0; }
+.footprint-toggle > summary::after {
+    content: '▸';
+    font-size: 1rem;
+    color: var(--text-subtle);
+    transition: transform 0.2s;
+    line-height: 1;
+}
+.footprint-toggle[open] > summary::after {
+    transform: rotate(90deg);
+}
+
 /* Footer */
 footer {
     text-align: center;
