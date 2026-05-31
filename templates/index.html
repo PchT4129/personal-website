@@ -140,12 +140,10 @@
         </section>
 
         <section id="cities" class="fade-up">
-            <details class="footprint-toggle" open>
-                <summary><h2>Footprints</h2></summary>
-                <p class="section-sub">Always moving — 105 places · 26 countries & territories · 3 continents and counting.</p>
-                <div id="map"></div>
-                <div id="city-list"></div>
-            </details>
+            <h2>Footprints</h2>
+            <p class="section-sub">Always moving — 105 places · 26 countries & territories · 3 continents and counting.</p>
+            <div id="map"></div>
+            <div id="city-list"></div>
         </section>
 
         <section id="skills" class="fade-up">
@@ -400,9 +398,7 @@
             tileLayer = L.tileLayer(isDark ? darkTiles : lightTiles, { attribution, maxZoom: 18 }).addTo(map);
         });
 
-        document.querySelector('.footprint-toggle').addEventListener('toggle', function () {
-            if (this.open) setTimeout(() => map.invalidateSize(), 50);
-        });
+
     </script>
 
     <script>
