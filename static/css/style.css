@@ -558,6 +558,134 @@ html.dark .school-logo {
     text-decoration: underline;
 }
 
+/* Hamburger toggle */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border-card);
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.nav-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        margin-top: 0.5rem;
+        border-top: 1px solid var(--border);
+        padding-top: 0.5rem;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu li {
+        padding: 0.4rem 0;
+    }
+
+    main {
+        padding: 0 1.2rem;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    #hero {
+        padding-top: 4rem;
+        padding-bottom: 3rem;
+    }
+
+    .hero-content {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .avatar {
+        width: 110px;
+        height: 110px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        text-align: center;
+    }
+
+    .timeline-item {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .logo-wrap {
+        width: auto;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #map {
+        height: 300px;
+    }
+
+    #city-list {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #map {
+        height: 240px;
+    }
+}
+
 /* Footer */
 footer {
     text-align: center;

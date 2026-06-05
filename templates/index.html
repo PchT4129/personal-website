@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人主页</title>
+    <title>Yixiao Tao – Robotics &amp; AI</title>
+    <meta name="description" content="Yixiao Tao – MSc Robotics and AI student at UCL, working on SLAM, multimodal perception, and robot scene understanding.">
+    <meta name="author" content="Yixiao Tao">
+    <meta property="og:title" content="Yixiao Tao – Robotics &amp; AI">
+    <meta property="og:description" content="MSc Robotics and AI student at UCL, working on SLAM, multimodal perception, and robot scene understanding.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css"/>
@@ -13,7 +18,8 @@
     <header>
         <nav>
             <span class="logo">Yixiao</span>
-            <ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <ul class="nav-menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#cities">Footprints</a></li>
@@ -42,12 +48,8 @@
         <section id="about" class="fade-up">
             <h2>About Me</h2>
             <p>
-                I'm from Ningbo, Zhejiang, China. I attended
-                <strong>Ningbo Xiaoshi High School</strong>, then completed my
-                undergraduate degree in <strong>Computer Science and Technology</strong>
-                at <strong>Xiamen University Malaysia</strong>. I'm currently pursuing
-                an <strong>MSc in Robotics and Artificial Intelligence</strong> at
-                <strong>University College London (UCL)</strong>.
+                A Robotics and AI student at UCL, I'm drawn to how machines perceive the world —
+                through vision, sound, and spatial understanding.
             </p>
             <div class="timeline">
                 <div class="timeline-item">
@@ -58,7 +60,7 @@
                 <div class="timeline-item">
                     <span class="year">2021 – 2025</span>
                     <span class="logo-wrap"><img src="/static/images/xmumy-logo.png" alt="XMUMY" class="school-logo"></span>
-                    <span class="event">Xiamen University Malaysia &middot; BSc Computer Science &amp; Technology</span>
+                    <span class="event">Xiamen University Malaysia &middot; BEng Computer Science &amp; Technology</span>
                 </div>
                 <div class="timeline-item">
                     <span class="year">2025 – present</span>
@@ -391,14 +393,6 @@
             }
         });
 
-// 深色模式切换时同步地图 tiles
-        document.getElementById('theme-toggle').addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            map.removeLayer(tileLayer);
-            tileLayer = L.tileLayer(isDark ? darkTiles : lightTiles, { attribution, maxZoom: 18 }).addTo(map);
-        });
-
-
     </script>
 
     <script>
@@ -415,6 +409,21 @@
             const isDark = html.classList.toggle('dark');
             toggle.textContent = isDark ? '☀️' : '🌙';
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            map.removeLayer(tileLayer);
+            tileLayer = L.tileLayer(isDark ? darkTiles : lightTiles, { attribution, maxZoom: 18 }).addTo(map);
+        });
+
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+        document.querySelectorAll('.nav-menu a').forEach(a => {
+            a.addEventListener('click', () => {
+                navMenu.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
         });
     </script>
 </body>
