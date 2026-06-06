@@ -35,10 +35,10 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Hi, I'm <span class="highlight">Yixiao Tao</span></h1>
-                    <p class="subtitle">MSc Robotics & AI @ UCL &nbsp;·&nbsp; 陶邑潇</p>
+                    <p class="subtitle">Robotics &amp; AI &nbsp;·&nbsp; UCL</p>
                     <div class="hero-actions">
-                        <a href="/static/files/cv-en.pdf" download="Yixiao_Tao_Resume.pdf" class="btn btn-primary">Download CV (EN)</a>
-                        <a href="/static/files/cv-zh.pdf" download="陶邑潇_简历.pdf" class="btn btn-secondary">下载简历 (中文)</a>
+                        <a href="/static/files/cv-en.pdf" download="Yixiao_Tao_Resume.pdf" class="btn btn-primary">CV (EN)</a>
+                        <a href="/static/files/cv-zh.pdf" download="陶邑潇_简历.pdf" class="btn btn-secondary">简历 (中文)</a>
                     </div>
                 </div>
                 <img src="/static/images/avatar.jpg" alt="Yixiao Tao" class="avatar">
@@ -60,7 +60,7 @@
                 <div class="timeline-item">
                     <span class="year">2021 – 2025</span>
                     <span class="logo-wrap"><img src="/static/images/xmumy-logo.png" alt="XMUMY" class="school-logo"></span>
-                    <span class="event">Xiamen University Malaysia &middot; BEng Computer Science &amp; Technology</span>
+                    <span class="event">Xiamen University Malaysia &middot; BEng Computer Science and Technology</span>
                 </div>
                 <div class="timeline-item">
                     <span class="year">2025 – present</span>
@@ -153,37 +153,41 @@
             <div class="skills-grid">
                 <div class="skills-col">
                     <h4>Languages</h4>
-                    <ul>
-                        <li>Python</li>
-                        <li>TypeScript / JavaScript</li>
-                        <li>C++</li>
-                    </ul>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Java</span>
+                    </div>
                 </div>
                 <div class="skills-col">
                     <h4>ML / Robotics</h4>
-                    <ul>
-                        <li>PyTorch</li>
-                        <li>SLAM &amp; Visual Odometry</li>
-                        <li>Visual Place Recognition</li>
-                        <li>Multimodal Perception</li>
-                    </ul>
+                    <div class="tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">SLAM</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Visual Place Recognition</span>
+                        <span class="tag">Multimodal Perception</span>
+                        <span class="tag">Control</span>
+                        <span class="tag">MPC</span>
+                        <span class="tag">Kalman Filter</span>
+                    </div>
                 </div>
                 <div class="skills-col">
                     <h4>Full-Stack</h4>
-                    <ul>
-                        <li>React + FastAPI</li>
-                        <li>Docker &amp; Celery</li>
-                        <li>REST API Design</li>
-                    </ul>
+                    <div class="tags">
+                        <span class="tag">React + FastAPI</span>
+                        <span class="tag">Docker &amp; Celery</span>
+                        <span class="tag">REST API Design</span>
+                    </div>
                 </div>
                 <div class="skills-col">
                     <h4>Research Interests</h4>
-                    <ul>
-                        <li>Semantic SLAM</li>
-                        <li>Audio-Visual Learning</li>
-                        <li>Robot Scene Understanding</li>
-                        <li>Foundation Models for Robotics</li>
-                    </ul>
+                    <div class="tags">
+                        <span class="tag">Semantic SLAM</span>
+                        <span class="tag">Audio-Visual Learning</span>
+                        <span class="tag">Robot Scene Understanding</span>
+                        <span class="tag">Foundation Models for Robotics</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -412,6 +416,20 @@
             map.removeLayer(tileLayer);
             tileLayer = L.tileLayer(isDark ? darkTiles : lightTiles, { attribution, maxZoom: 18 }).addTo(map);
         });
+
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+        const scrollSpy = () => {
+            let current = '';
+            sections.forEach(s => {
+                if (window.scrollY >= s.offsetTop - 120) current = s.id;
+            });
+            navLinks.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+            });
+        };
+        window.addEventListener('scroll', scrollSpy, { passive: true });
+        scrollSpy();
 
         const navToggle = document.querySelector('.nav-toggle');
         const navMenu = document.querySelector('.nav-menu');

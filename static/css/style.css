@@ -120,6 +120,11 @@ nav a:hover {
     color: var(--text);
 }
 
+nav a.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
 /* Dark mode toggle */
 #theme-toggle {
     background: none;
@@ -501,6 +506,14 @@ html.dark .school-logo {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 2rem;
     margin-top: 1.5rem;
+}
+
+.skills-col {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    transition: var(--transition);
 }
 
 .skills-col h4 {
