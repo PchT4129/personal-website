@@ -406,29 +406,40 @@ html.dark .school-logo {
 #city-list {
     margin-top: 1.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+    gap: 0.4rem;
 }
 
 .cl-section {
-    border: 1px solid var(--border-card);
+    border: 1px solid transparent;
     border-radius: 8px;
     overflow: hidden;
     transition: var(--transition);
+}
+
+.cl-section.cl-open {
+    grid-column: 1 / -1;
+    border-color: var(--border-card);
 }
 
 .cl-header {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.6rem;
-    padding: 0.7rem 1rem;
-    background: none;
+    padding: 0.7rem 0.5rem;
+    background: var(--bg-tag);
     border: none;
     cursor: pointer;
     color: var(--text);
-    text-align: left;
     transition: background 0.15s;
+}
+
+.cl-section.cl-open .cl-header {
+    justify-content: flex-start;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border);
 }
 
 .cl-header:hover {
@@ -436,14 +447,23 @@ html.dark .school-logo {
 }
 
 .cl-flag {
-    width: 1.4rem;
-    height: 1.1rem;
+    width: 2.6rem;
+    height: 1.95rem;
     flex-shrink: 0;
-    border-radius: 2px;
+    border-radius: 3px;
+}
+
+.cl-meta {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cl-section.cl-open .cl-meta {
+    display: flex;
 }
 
 .cl-country {
-    flex: 1;
     font-size: 0.9rem;
     font-weight: 500;
 }
@@ -451,15 +471,19 @@ html.dark .school-logo {
 .cl-count {
     font-size: 0.78rem;
     color: var(--text-subtle);
+    font-style: normal;
 }
 
 .cl-arrow {
+    display: none;
     font-size: 1rem;
     color: var(--text-subtle);
     transition: transform 0.2s;
+    margin-left: auto;
 }
 
 .cl-section.cl-open .cl-arrow {
+    display: block;
     transform: rotate(90deg);
 }
 
@@ -468,7 +492,6 @@ html.dark .school-logo {
     flex-wrap: wrap;
     gap: 0.4rem;
     padding: 0.6rem 1rem 0.8rem;
-    border-top: 1px solid var(--border);
 }
 
 .cl-section.cl-open .cl-body {
@@ -503,32 +526,25 @@ html.dark .school-logo {
 /* Skills */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 1.5rem;
 }
 
-.skills-col {
-    background: var(--bg-card);
-    border: 1px solid var(--border-card);
-    border-radius: 8px;
-    padding: 1.2rem 1.4rem;
-    transition: var(--transition);
-}
-
 .skills-col h4 {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
     color: var(--accent);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.8rem;
 }
 
 .skills-col ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.45rem;
 }
 
 .skills-col li {
@@ -559,16 +575,16 @@ html.dark .school-logo {
 }
 
 .card-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     margin-top: 1rem;
-    font-size: 0.85rem;
-    color: var(--accent);
+    color: var(--text-subtle);
     text-decoration: none;
-    font-weight: 500;
+    transition: color 0.2s;
 }
 
 .card-link:hover {
-    text-decoration: underline;
+    color: var(--accent);
 }
 
 /* Hamburger toggle */
@@ -677,7 +693,6 @@ html.dark .school-logo {
 
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
     }
 
     h2 {
@@ -690,9 +705,6 @@ html.dark .school-logo {
         font-size: 1.8rem;
     }
 
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
 
     #map {
         height: 240px;
