@@ -306,6 +306,15 @@ html.dark .school-logo {
     box-shadow: 0 4px 12px var(--shadow);
 }
 
+.card-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-subtle);
+    margin-bottom: 0.5rem;
+}
+
 .card-header {
     display: flex;
     align-items: center;
