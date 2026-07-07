@@ -351,6 +351,7 @@
             iconAnchor: [5, 5],
         });
 
+        const markersByName = {};
         cities.forEach(c => {
             const marker = L.marker([c.lat, c.lng], { icon: dotIcon('#0066ff') }).addTo(map);
             if (c.photo) {
@@ -362,6 +363,7 @@
             } else {
                 marker.bindPopup(`<strong>${c.name}</strong>${c.note ? `<br><span style="color:#888;font-size:0.85em">${c.note}</span>` : ''}`);
             }
+            markersByName[c.name] = marker;
         });
 
         // 生成城市列表（按国家折叠）
@@ -383,7 +385,7 @@
                 </button>
                 <div class="cl-body">
                     ${data.cities.map(c => `
-                        <span class="cl-city" data-lat="${c.lat}" data-lng="${c.lng}">
+                        <span class="cl-city" data-lat="${c.lat}" data-lng="${c.lng}" data-name="${c.name}">
                             ${c.name}${c.note ? `<em> · ${c.note}</em>` : ''}
                         </span>`).join('')}
                 </div>`;
@@ -396,8 +398,12 @@
             if (header) {
                 header.parentElement.classList.toggle('cl-open');
             } else if (cityEl) {
+                const marker = markersByName[cityEl.dataset.name];
                 map.flyTo([+cityEl.dataset.lat, +cityEl.dataset.lng], 10, { duration: 1 });
                 document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (marker) {
+                    map.once('moveend', () => marker.openPopup());
+                }
             }
         });
 
