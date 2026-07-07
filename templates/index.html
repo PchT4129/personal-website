@@ -352,9 +352,16 @@
         });
 
         cities.forEach(c => {
-            L.marker([c.lat, c.lng], { icon: dotIcon('#0066ff') })
-                .addTo(map)
-                .bindPopup(`<strong>${c.name}</strong>${c.note ? `<br><span style="color:#888;font-size:0.85em">${c.note}</span>` : ''}`);
+            const marker = L.marker([c.lat, c.lng], { icon: dotIcon('#0066ff') }).addTo(map);
+            if (c.photo) {
+                marker.bindPopup(
+                    `<img src="/static/images/cities/${c.photo}" alt="${c.name}">
+                     <div class="popup-label">${c.name}${c.note ? `<span class="popup-note">${c.note}</span>` : ''}</div>`,
+                    { className: 'city-photo-popup', maxWidth: 210 }
+                );
+            } else {
+                marker.bindPopup(`<strong>${c.name}</strong>${c.note ? `<br><span style="color:#888;font-size:0.85em">${c.note}</span>` : ''}`);
+            }
         });
 
         // 生成城市列表（按国家折叠）
