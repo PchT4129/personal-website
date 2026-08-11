@@ -288,15 +288,10 @@ html.dark .school-logo {
 
 /* Projects */
 .project-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
-}
-
-.project-grid .project-card {
-    flex: 1 1 300px;
-    max-width: 520px;
 }
 
 .project-card {
