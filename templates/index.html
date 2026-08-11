@@ -77,19 +77,23 @@
             <h2>Projects</h2>
 
             <div class="project-featured fade-up">
-                <div class="featured-label">MSc Project · In Progress</div>
-                <h3>SAV-SLAM: Semantic Visual-Audio SLAM</h3>
+                <div class="featured-label">MSc Dissertation · In Progress</div>
+                <h3>SAV-SLAM: Semantic Audio-Visual SLAM</h3>
                 <p>
-                    Exploring how auditory perception can augment visual SLAM systems. The project
-                    integrates audio foundation models alongside SAM (Segment Anything Model) into
-                    a SLAM baseline to enable multimodal scene understanding — moving beyond
-                    purely visual representations toward richer, hearing-aware robot perception.
+                    Binds sound sources to physical objects in a 3D map on commodity hardware
+                    (iPhone 16 Pro + ~$60 four-mic array). A visual branch (VGGT-SLAM + YOLO)
+                    supplies objects and geometry; a text-prompted audio branch discovers and
+                    separates emitters; a directional (DoA) layer arbitrates when the semantic
+                    prior is ambiguous, and recovers sources the visual vocabulary missed.
+                    The phone-only pipeline is demonstrated end-to-end on real recordings;
+                    array integration is under way.
                 </p>
                 <div class="tags">
                     <span class="tag">SLAM</span>
-                    <span class="tag">SAM</span>
-                    <span class="tag">Audio Foundation Models</span>
                     <span class="tag">Multimodal Perception</span>
+                    <span class="tag">VGGT-SLAM</span>
+                    <span class="tag">CLAP</span>
+                    <span class="tag">Direction of Arrival</span>
                     <span class="tag">PyTorch</span>
                     <span class="tag">Robotics</span>
                 </div>
