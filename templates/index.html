@@ -1,444 +1,137 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yixiao Tao – Robotics &amp; AI</title>
-    <meta name="description" content="Yixiao Tao – MSc Robotics and AI student at UCL, working on SLAM, multimodal perception, and robot scene understanding.">
+    <title>Yixiao Tao — Robotics &amp; AI</title>
+    <meta name="description" content="Yixiao Tao, Robotics and AI at UCL. Exploring how robots see, hear, and understand the world through SLAM and multimodal perception.">
     <meta name="author" content="Yixiao Tao">
-    <meta name="google-site-verification" content="1t9ffpivfTRVIp48_q7Ijsk8BtLBLZb2WqBgg26s-q0" />
-    <meta property="og:title" content="Yixiao Tao – Robotics &amp; AI">
-    <meta property="og:description" content="MSc Robotics and AI student at UCL, working on SLAM, multimodal perception, and robot scene understanding.">
+    <meta name="google-site-verification" content="1t9ffpivfTRVIp48_q7Ijsk8BtLBLZb2WqBgg26s-q0">
+    <meta property="og:title" content="Yixiao Tao — Robotics &amp; AI">
+    <meta property="og:description" content="Exploring how robots see, hear, and understand the world. Projects, research, and a few places along the way.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yixiao-tao.com/">
     <meta property="og:image" content="https://yixiao-tao.com/static/images/avatar.jpg">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230066ff'/><text x='50' y='69' font-family='system-ui,sans-serif' font-size='44' font-weight='700' fill='white' text-anchor='middle'>YX</text></svg>">
+    <link rel="canonical" href="https://yixiao-tao.com/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232d6556'/><text x='50' y='67' font-family='sans-serif' font-size='42' font-weight='700' fill='white' text-anchor='middle'>yt.</text></svg>">
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            document.documentElement.classList.toggle('dark', saved === 'dark' || (!saved && matchMedia('(prefers-color-scheme: dark)').matches));
+        } catch (_) { document.documentElement.classList.toggle('dark', matchMedia('(prefers-color-scheme: dark)').matches); }
+    </script>
     <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script defer src="/static/js/cities.js"></script>
+    <script defer src="/static/js/site.js"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <span class="logo">Yixiao</span>
-            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <nav class="container" aria-label="Main navigation">
+            <a class="logo" href="#hero" aria-label="Yixiao Tao, home">yt<span>.</span></a>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#cities">Footprints</a></li>
-                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><button id="theme-toggle" aria-label="Toggle dark mode"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li>
             </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" class="icon-button" aria-label="Toggle dark mode" aria-pressed="false"><svg class="moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg><svg class="sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
+                <button class="nav-toggle icon-button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span></button>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section id="hero">
+    <main id="main" class="container">
+        <section id="hero" aria-labelledby="hero-title">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Hi, I'm <span class="highlight">Yixiao Tao</span></h1>
-                    <p class="subtitle">Robotics &amp; AI &nbsp;·&nbsp; UCL</p>
+                    <p class="eyebrow">ROBOTICS &amp; AI · UCL</p>
+                    <h1 id="hero-title">Yixiao Tao</h1>
+                    <p class="hero-description">I explore how robots see, hear, and understand their surroundings — through SLAM, computer vision, and multimodal perception.</p>
                     <div class="hero-actions">
-                        <a href="/static/files/cv-en.pdf" download="Yixiao_Tao_Resume.pdf" class="btn btn-primary">CV (EN)</a>
-                        <a href="/static/files/cv-zh.pdf" download="陶邑潇_简历.pdf" class="btn btn-secondary">简历 (中文)</a>
+                        <a class="btn btn-primary" href="#projects">View projects</a>
+                        <a class="text-link" href="/static/files/cv-en.pdf" download="Yixiao_Tao_Resume.pdf">CV (EN) <span aria-hidden="true">↓</span></a>
+                        <a class="text-link" href="/static/files/cv-zh.pdf" download="陶邑潇_简历.pdf" lang="zh">中文简历 <span aria-hidden="true">↓</span></a>
                     </div>
                 </div>
-                <img src="/static/images/avatar.jpg" alt="Yixiao Tao" class="avatar">
+                <figure class="hero-portrait">
+                    <div class="portrait-frame"><img src="/static/images/avatar.jpg" alt="Yixiao Tao by the sea" width="400" height="400" fetchpriority="high"></div>
+                </figure>
             </div>
         </section>
 
-        <section id="about" class="fade-up">
-            <h2>About Me</h2>
-            <p>
-                A Robotics and AI student at UCL, I'm drawn to how machines perceive the world —
-                through vision, sound, and spatial understanding.
-            </p>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span class="year">2018 – 2021</span>
-                    <span class="logo-wrap"><img src="/static/images/xiaoshi-logo-new.png" alt="Xiaoshi" class="school-logo"></span>
-                    <span class="event">Ningbo Xiaoshi High School</span>
+        <section id="projects" class="section" aria-labelledby="projects-title">
+            <div class="section-heading"><div><h2 id="projects-title">Projects</h2></div><a class="text-link" href="https://github.com/PchT4129" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></div>
+            <article class="project featured-project">
+                <div class="project-copy">
+                    <div class="project-meta"><span>MSc Dissertation</span><span class="status-label">Submitted</span></div>
+                    <h3>SAV-SLAM</h3>
+                    <p class="project-subtitle">Semantic audio-visual SLAM</p>
+                    <p>Semantic audio-visual SLAM that connects sound sources to physical objects. Built around an iPhone 16 Pro and a ~$60 four-microphone array.</p>
+                    <div class="tags"><span>Multimodal perception</span><span>VGGT-SLAM</span><span>CLAP</span><span>PyTorch</span></div>
+                    <div class="project-actions"><a class="text-link" href="https://github.com/PchT4129/sav-slam" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></div>
+                    <details class="project-details"><summary>How it works <span aria-hidden="true">+</span></summary><p>VGGT-SLAM and YOLO build an object-centric map; CLAP and text-prompted separation discover sound streams. A shared time-frequency mask weights the raw microphone channels while preserving relative phase. SRP-PHAT bearings are mapped into image columns for attribution and source discovery. The system reports ambiguous or unattributed streams when evidence is insufficient; objects sharing a bearing remain a known limitation.</p></details>
                 </div>
-                <div class="timeline-item">
-                    <span class="year">2021 – 2025</span>
-                    <span class="logo-wrap"><img src="/static/images/xmumy-logo-new.svg" alt="XMUMY" class="school-logo"></span>
-                    <span class="event">Xiamen University Malaysia &middot; BEng Computer Science and Technology</span>
+                <figure class="project-visual sav-visual" aria-labelledby="sav-figure-title">
+                    <figcaption id="sav-figure-title" class="figure-title">Sound-to-object attribution</figcaption>
+                    {% include 'illustrations/sav-slam.svg' %}
+                    <p class="figure-note">Schematic · direction resolves candidates or guides source discovery.</p>
+                </figure>
+            </article>
+            <article class="project vpr-project">
+                <div class="project-copy">
+                    <div class="project-meta"><span>Independent Project</span><span>SLAM / Robotics</span></div>
+                    <h3>LoopLens</h3>
+                    <p class="project-subtitle">Visual loop closure &amp; pose-graph optimization</p>
+                    <p>Detects revisited places, estimates relative poses, and corrects trajectory drift. Combines DINOv2 retrieval, DISK + LightGlue matching, stereo-depth PnP, and a custom SE(3) pose-graph optimizer.</p>
+                    <div class="tags"><span>DINOv2</span><span>LightGlue</span><span>PnP + RANSAC</span><span>SE(3)</span></div>
+                    <div class="project-actions"><a class="text-link" href="https://github.com/PchT4129/vpr-loop-closure" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></div>
+                    <details class="project-details"><summary>Implementation &amp; evaluation <span aria-hidden="true">+</span></summary><p>Implemented a sparse Gauss–Newton optimizer on SE(3), including Lie-group updates, analytical Jacobians, and separate translation and rotation weights. Loop constraints come from stereo depth and geometrically verified image matches.</p><p>Evaluated offline on all 4,541 frames of KITTI 00, using an ORB-SLAM3 stereo trajectory with its loop-closing thread disabled. ATE RMSE is measured after rigid alignment without scale correction. These results cover one sequence; online operation has not been evaluated.</p><p>A separate Gardens Point study compares CNN and transformer retrieval, causal sequence matching, and geometric verification. Acceptance thresholds are fitted on validation data and frozen before test, keeping ranking improvements separate from acceptance reliability.</p></details>
                 </div>
-                <div class="timeline-item">
-                    <span class="year">2025 – 2026</span>
-                    <span class="logo-wrap"><img src="/static/images/ucl-logo-new.jpg" alt="UCL" class="school-logo"></span>
-                    <span class="event">University College London &middot; MSc Robotics and Artificial Intelligence</span>
-                </div>
-            </div>
+                <figure class="project-visual looplens-visual" aria-labelledby="looplens-figure-title">
+                    <figcaption id="looplens-figure-title" class="figure-title">Loop closure on KITTI 00</figcaption>
+                    <ol class="figure-pipeline" aria-label="LoopLens processing stages"><li>Retrieve</li><li>Verify + PnP</li><li>Optimize</li></ol>
+                    <div class="plot-legend" aria-label="Trajectory legend"><span class="legend-truth">Ground truth</span><span class="legend-before">Before</span><span class="legend-after">After</span></div>
+                    {% include 'illustrations/looplens.svg' %}
+                    <div class="figure-metrics"><div><strong>55%<small> lower ATE RMSE</small></strong><p>4.335 m → 1.956 m</p></div><div><strong>97%<small> ground-truth distance &lt; 5 m</small></strong><p>763 accepted loop pairs</p></div></div>
+                    <p class="figure-note">Recorded trajectories · rigid alignment · single-sequence offline evaluation.</p>
+                </figure>
+            </article>
         </section>
 
-        <section id="projects" class="fade-up">
-            <h2>Projects</h2>
-
-            <div class="project-featured fade-up">
-                <div class="featured-label">MSc Dissertation · In Progress</div>
-                <h3>SAV-SLAM: Semantic Audio-Visual SLAM</h3>
-                <p>
-                    Binds sound sources to physical objects in a 3D map on commodity hardware
-                    (iPhone 16 Pro + ~$60 four-mic array). A visual branch (VGGT-SLAM + YOLO)
-                    supplies objects and geometry; a text-prompted audio branch discovers and
-                    separates emitters; a directional (DoA) layer arbitrates when the semantic
-                    prior is ambiguous, and recovers sources the visual vocabulary missed.
-                    The phone-only pipeline is demonstrated end-to-end on real recordings;
-                    array integration is under way.
-                </p>
-                <div class="tags">
-                    <span class="tag">SLAM</span>
-                    <span class="tag">Multimodal Perception</span>
-                    <span class="tag">VGGT-SLAM</span>
-                    <span class="tag">CLAP</span>
-                    <span class="tag">Direction of Arrival</span>
-                    <span class="tag">PyTorch</span>
-                    <span class="tag">Robotics</span>
-                </div>
-                <a href="https://github.com/PchT4129/sav-slam" target="_blank" rel="noopener" class="card-link" aria-label="View on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
-            </div>
-
-            <div class="project-grid">
-                <div class="project-card fade-up">
-                    <div class="card-label">Side Project</div>
-                    <div class="card-header">
-                        <h3>VPR Loop Closure</h3>
-                        <span class="badge badge-ml">ML / Robotics</span>
-                    </div>
-                    <p>A four-stage loop-closure front end for SLAM, built as a controlled classic-versus-modern comparison: every swap — ResNet18 to DINOv2, triplet loss to InfoNCE, ORB to DISK + LightGlue — is motivated by a measured failure of the stage it replaces. Zero-training DINOv2 features beat the fine-tuned ResNet18 under an open-set protocol (best F1 0.874 vs 0.796), and sequence re-ranking tripled Recall@100%-Precision from 0.23 to 0.69.</p>
-                    <div class="tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">DINOv2</span>
-                        <span class="tag">SLAM</span>
-                        <span class="tag">Metric Learning</span>
-                        <span class="tag">LightGlue</span>
-                    </div>
-                    <a href="https://github.com/PchT4129/vpr-loop-closure" target="_blank" rel="noopener" class="card-link" aria-label="View on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg></a>
-                </div>
-            </div>
+        <section id="about" class="section" aria-labelledby="about-title">
+            <div class="about-layout"><div class="about-intro"><h2 id="about-title">About</h2><p>I'm a Robotics and AI student at UCL, drawn to the space where vision, sound, and spatial understanding meet.</p></div>
+            <div class="education"><h3 class="small-label">EDUCATION</h3>
+                <div class="education-item"><span class="education-logo"><img src="/static/images/ucl-logo-new.jpg" alt="" width="58" height="40" loading="lazy"></span><div><span class="year">2025 — 2026</span><h4>University College London</h4><p>MSc Robotics and Artificial Intelligence</p></div></div>
+                <div class="education-item"><span class="education-logo"><img src="/static/images/xmumy-logo-new.svg" alt="" width="58" height="40" loading="lazy"></span><div><span class="year">2021 — 2025</span><h4>Xiamen University Malaysia</h4><p>BEng Computer Science and Technology</p></div></div>
+                <div class="education-item"><span class="education-logo"><img src="/static/images/xiaoshi-logo-new.png" alt="" width="48" height="40" loading="lazy"></span><div><span class="year">2018 — 2021</span><h4>Ningbo Xiaoshi High School</h4></div></div>
+            </div></div>
+            <div id="skills" class="skills-grid"><div><h3 class="small-label">LANGUAGES</h3><p>Python · C++ · Java</p></div><div><h3 class="small-label">FRAMEWORKS &amp; TOOLS</h3><p>PyTorch · React · FastAPI · Docker</p></div><div><h3 class="small-label">ROBOTICS &amp; PERCEPTION</h3><p>SLAM · Computer vision · Multimodal perception · Motion planning · MPC · Kalman filtering · Legged robotics</p></div></div>
         </section>
 
-        <section id="cities" class="fade-up">
-            <h2>Footprints</h2>
-<div id="map"></div>
+        <section id="cities" class="section" aria-labelledby="cities-title">
+            <div class="section-heading"><div><h2 id="cities-title">Footprints</h2></div></div>
+            <div class="gallery" aria-label="City photo gallery">
+                <div class="gallery-toolbar" id="gallery-controls" hidden>
+                    <span id="gallery-position" role="status" aria-live="polite"></span>
+                    <div class="gallery-arrows"><button type="button" id="gallery-prev" class="icon-button" aria-label="Previous photographs" aria-controls="photo-journal" disabled>←</button><button type="button" id="gallery-next" class="icon-button" aria-label="Next photographs" aria-controls="photo-journal">→</button></div>
+                </div>
+                <div class="photo-journal" id="photo-journal" role="region" tabindex="0" aria-label="Travel photographs. Use the arrow keys or swipe to browse."></div>
+                <p id="gallery-empty" class="figure-note" hidden>No travel photographs yet.</p>
+            </div>
+            <script id="gallery-data" type="application/json">{{ gallery_photos | tojson }}</script>
+            <div class="map-toolbar"><div id="travel-stats" class="travel-stats" aria-live="polite">Places I've been</div><button id="reset-map" class="text-link" type="button" hidden>Reset map <span aria-hidden="true">↗</span></button></div>
+            <div id="map" data-tile-url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" role="region" aria-label="Interactive map of visited cities"><p class="map-status" role="status">Loading the travel map…</p></div>
+            <div class="city-toolbar"><label class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg><input id="city-search" type="search" placeholder="Find a city or country…" aria-label="Search cities, countries, or regions"></label><span id="search-status" role="status"></span></div>
             <div id="city-list"></div>
+            <noscript><p class="no-script-note">Enable JavaScript to explore the interactive map and travel photographs.</p></noscript>
         </section>
 
-        <section id="skills" class="fade-up">
-            <h2>Skills &amp; Interests</h2>
-            <div class="skills-grid">
-                <div class="skills-col">
-                    <h4>Languages</h4>
-                    <ul>
-                        <li>Python</li>
-                        <li>C++</li>
-                        <li>Java</li>
-                    </ul>
-                </div>
-                <div class="skills-col">
-                    <h4>Frameworks &amp; Tools</h4>
-                    <ul>
-                        <li>PyTorch</li>
-                        <li>React + FastAPI</li>
-                        <li>Docker</li>
-                    </ul>
-                </div>
-                <div class="skills-col">
-                    <h4>Robotics &amp; Perception</h4>
-                    <ul>
-                        <li>SLAM</li>
-                        <li>Computer Vision</li>
-                        <li>Multimodal Perception</li>
-                        <li>Motion Planning</li>
-                        <li>Model Predictive Control</li>
-                        <li>Kalman Filter</li>
-                        <li>Legged Robotics</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="fade-up">
-            <h2>Contact</h2>
-            <div class="contact-links">
-                <a href="mailto:i@yixiao-tao.com" class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    i@yixiao-tao.com
-                </a>
-                <a href="https://www.linkedin.com/in/yixiao-tao-44935b260/" target="_blank" rel="noopener" class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    linkedin.com/in/yixiao-tao
-                </a>
-                <a href="https://github.com/PchT4129" target="_blank" rel="noopener" class="contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                    github.com/PchT4129
-                </a>
-            </div>
-        </section>
+        <section id="contact" class="section" aria-labelledby="contact-title"><div class="contact-layout"><div><h2 id="contact-title">Contact</h2><a class="contact-email" href="mailto:i@yixiao-tao.com">i@yixiao-tao.com <span aria-hidden="true">↗</span></a></div><div class="contact-links"><a href="https://github.com/PchT4129" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/yixiao-tao-44935b260/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a><button id="copy-email" type="button">Copy email <span aria-hidden="true">⧉</span></button><span id="copy-status" role="status"></span></div></div></section>
     </main>
-
-    <footer>
-        <p>© 2026 Yixiao</p>
-    </footer>
-    <script>
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    observer.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-    </script>
-
-    <script>
-        const cities = [
-            { name: "London",          lat: 51.5074,  lng: -0.1278,   note: "",                  country: "United Kingdom", fi: "gb",  photo: "London.jpg" },
-            { name: "Edinburgh",       lat: 55.9533,  lng: -3.1883,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "Glasgow",         lat: 55.8642,  lng: -4.2518,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "Bristol",         lat: 51.4545,  lng: -2.5879,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "Oxford",          lat: 51.7520,  lng: -1.2577,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "Cambridge",       lat: 52.2053,  lng:  0.1218,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "York",            lat: 53.9600,  lng: -1.0873,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "Bath",            lat: 51.3811,  lng: -2.3590,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "Manchester",      lat: 53.4808,  lng: -2.2426,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "Liverpool",       lat: 53.4084,  lng: -2.9916,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "Eastbourne",      lat: 50.7692,  lng:  0.2799,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "Maidenhead",      lat: 51.5218,  lng: -0.7188,   note: "",                  country: "United Kingdom", fi: "gb" },
-            { name: "Paris",           lat: 48.8566,  lng:  2.3522,   note: "",                  country: "France",         fi: "fr",  photo: "Paris.jpg" },
-            { name: "Barcelona",       lat: 41.3851,  lng:  2.1734,   note: "",                  country: "Spain",          fi: "es" },
-            { name: "Madrid",          lat: 40.4168,  lng: -3.7038,   note: "",                  country: "Spain",          fi: "es" },
-            { name: "Lisbon",          lat: 38.7223,  lng: -9.1393,   note: "",                  country: "Portugal",       fi: "pt" },
-            { name: "Budapest",        lat: 47.4979,  lng: 19.0402,   note: "",                  country: "Hungary",        fi: "hu",  photo: "Budapest.jpg" },
-            { name: "Prague",          lat: 50.0755,  lng: 14.4378,   note: "",                  country: "Czech Republic", fi: "cz",  photo: "Prague.jpg" },
-            { name: "Vienna",          lat: 48.2082,  lng: 16.3738,   note: "",                  country: "Austria",        fi: "at" },
-            { name: "Zurich",          lat: 47.3769,  lng:  8.5417,   note: "",                  country: "Switzerland",    fi: "ch" },
-            { name: "Lucerne",         lat: 47.0502,  lng:  8.3093,   note: "",                  country: "Switzerland",    fi: "ch" },
-            { name: "Interlaken",      lat: 46.6863,  lng:  7.8632,   note: "",                  country: "Switzerland",    fi: "ch" },
-            { name: "Lauterbrunnen",   lat: 46.5936,  lng:  7.9086,   note: "",                  country: "Switzerland",    fi: "ch" },
-            { name: "Grindelwald",     lat: 46.6244,  lng:  8.0413,   note: "",                  country: "Switzerland",    fi: "ch" },
-            { name: "Zermatt",         lat: 46.0207,  lng:  7.7491,   note: "",                  country: "Switzerland",    fi: "ch" },
-            { name: "Geneva",          lat: 46.2044,  lng:  6.1432,   note: "",                  country: "Switzerland",    fi: "ch" },
-            { name: "Rome",            lat: 41.9028,  lng: 12.4964,   note: "",                  country: "Italy",          fi: "it" },
-            { name: "Vatican City",    lat: 41.9029,  lng: 12.4534,   note: "",                  country: "Vatican City",   fi: "va" },
-            { name: "Milan",           lat: 45.4642,  lng:  9.1900,   note: "",                  country: "Italy",          fi: "it" },
-            { name: "Venice",          lat: 45.4408,  lng: 12.3155,   note: "",                  country: "Italy",          fi: "it",  photo: "Venice.jpg" },
-            { name: "Bolzano",         lat: 46.4983,  lng: 11.3548,   note: "",                  country: "Italy",          fi: "it" },
-            { name: "Ortisei",         lat: 46.5769,  lng: 11.6736,   note: "Val Gardena",       country: "Italy",          fi: "it" },
-            { name: "Amsterdam",       lat: 52.3676,  lng:  4.9041,   note: "",                  country: "Netherlands",    fi: "nl",  photo: "Amsterdam.jpg" },
-            { name: "Berlin",          lat: 52.5200,  lng: 13.4050,   note: "",                  country: "Germany",        fi: "de" },
-            { name: "Copenhagen",      lat: 55.6761,  lng: 12.5683,   note: "",                  country: "Denmark",        fi: "dk" },
-            { name: "Malmö",           lat: 55.6050,  lng: 13.0038,   note: "",                  country: "Sweden",         fi: "se",  photo: "Malmo.jpg" },
-            { name: "Stockholm",       lat: 59.3293,  lng: 18.0686,   note: "",                  country: "Sweden",         fi: "se",  photo: "Stockholm.jpg" },
-            { name: "Tromsø",          lat: 69.6492,  lng: 18.9553,   note: "",                  country: "Norway",         fi: "no",  photo: "Tromso.jpg" },
-            { name: "Lofoten Islands", lat: 68.1500,  lng: 14.0000,   note: "Full road trip",    country: "Norway",         fi: "no" },
-            { name: "Dubai",           lat: 25.2048,  lng: 55.2708,   note: "",                  country: "UAE",            fi: "ae" },
-            { name: "Abu Dhabi",       lat: 24.4539,  lng: 54.3773,   note: "",                  country: "UAE",            fi: "ae",  photo: "Abu Dhabi.jpg" },
-            { name: "Beijing",         lat: 39.9042,  lng: 116.4074,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Tianjin",         lat: 39.3434,  lng: 117.3616,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Shanghai",        lat: 31.2304,  lng: 121.4737,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Nanjing",         lat: 32.0603,  lng: 118.7969,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Suzhou",          lat: 31.2989,  lng: 120.5853,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Hangzhou",        lat: 30.2741,  lng: 120.1551,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Ningbo",          lat: 29.8683,  lng: 121.5440,  note: "Hometown",          country: "China",          fi: "cn" },
-            { name: "Shaoxing",        lat: 30.0300,  lng: 120.5800,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Huzhou",          lat: 30.8700,  lng: 120.0900,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Zhoushan",        lat: 29.9853,  lng: 122.2065,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Jinhua",          lat: 29.0788,  lng: 119.6474,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Quzhou",          lat: 28.9411,  lng: 118.8590,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Wenzhou",         lat: 28.0000,  lng: 120.6720,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Huangshan",       lat: 29.7147,  lng: 118.3374,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Jingdezhen",      lat: 29.2693,  lng: 117.2078,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Qingdao",         lat: 36.0671,  lng: 120.3826,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Xi'an",           lat: 34.3416,  lng: 108.9398,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Wuhan",           lat: 30.5928,  lng: 114.3055,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Yichang",         lat: 30.6920,  lng: 111.2864,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Changsha",        lat: 28.2278,  lng: 112.9388,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Fenghuang",       lat: 27.9440,  lng: 109.5990,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Zhangjiajie",     lat: 29.1166,  lng: 110.4791,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Chengdu",         lat: 30.5728,  lng: 104.0668,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Chongqing",       lat: 29.4316,  lng: 106.9123,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Jiuzhaigou / Huanglong", lat: 33.2620, lng: 103.9170, note: "",             country: "China",          fi: "cn" },
-            { name: "Kunming",         lat: 24.8801,  lng: 102.8329,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Dali",            lat: 25.6065,  lng: 100.2679,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Lijiang",         lat: 26.8721,  lng: 100.2299,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Guilin",          lat: 25.2810,  lng: 110.2900,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Guangzhou",       lat: 23.1291,  lng: 113.2644,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Shenzhen",        lat: 22.5431,  lng: 114.0579,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Zhuhai",          lat: 22.2710,  lng: 113.5767,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Chaozhou",        lat: 23.6566,  lng: 116.6225,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Shantou",         lat: 23.3541,  lng: 116.6820,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Zhangzhou",       lat: 24.5132,  lng: 117.6471,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Xiamen",          lat: 24.4798,  lng: 118.0894,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Sanya",           lat: 18.2524,  lng: 109.5120,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Haikou",          lat: 20.0440,  lng: 110.3419,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Wuzhishan",       lat: 18.7749,  lng: 109.5163,  note: "",                  country: "China",          fi: "cn" },
-            { name: "Hong Kong",       lat: 22.3193,  lng: 114.1694,  note: "",                  country: "Hong Kong",      fi: "hk",  photo: "Hong Kong.jpg" },
-            { name: "Macau",           lat: 22.1987,  lng: 113.5439,  note: "",                  country: "Macau",          fi: "mo" },
-            { name: "Taipei",          lat: 25.0330,  lng: 121.5654,  note: "",                  country: "Taiwan",         fi: "tw",  photo: "Taipei.jpg" },
-            { name: "Taichung",        lat: 24.1477,  lng: 120.6736,  note: "",                  country: "Taiwan",         fi: "tw" },
-            { name: "Kaohsiung",       lat: 22.6273,  lng: 120.3014,  note: "",                  country: "Taiwan",         fi: "tw" },
-            { name: "Tokyo",           lat: 35.6762,  lng: 139.6503,  note: "",                  country: "Japan",          fi: "jp",  photo: "Tokyo.jpg" },
-            { name: "Osaka",           lat: 34.6937,  lng: 135.5023,  note: "",                  country: "Japan",          fi: "jp",  photo: "Osaka.jpg" },
-            { name: "Kyoto",           lat: 35.0116,  lng: 135.7681,  note: "",                  country: "Japan",          fi: "jp" },
-            { name: "Kobe",            lat: 34.6901,  lng: 135.1956,  note: "",                  country: "Japan",          fi: "jp" },
-            { name: "Nara",            lat: 34.6851,  lng: 135.8048,  note: "",                  country: "Japan",          fi: "jp" },
-            { name: "Hiroshima",       lat: 34.3853,  lng: 132.4553,  note: "",                  country: "Japan",          fi: "jp",  photo: "Hiroshima.jpg" },
-            { name: "Fukuoka",         lat: 33.5904,  lng: 130.4017,  note: "",                  country: "Japan",          fi: "jp" },
-            { name: "Kumamoto",        lat: 32.8031,  lng: 130.7079,  note: "",                  country: "Japan",          fi: "jp" },
-            { name: "Kagoshima",       lat: 31.5966,  lng: 130.5571,  note: "",                  country: "Japan",          fi: "jp" },
-            { name: "Oita",            lat: 33.2382,  lng: 131.6126,  note: "",                  country: "Japan",          fi: "jp" },
-            { name: "Sapporo",         lat: 43.0618,  lng: 141.3545,  note: "",                  country: "Japan",          fi: "jp" },
-            { name: "Otaru",           lat: 43.1907,  lng: 140.9947,  note: "",                  country: "Japan",          fi: "jp" },
-            { name: "Naha",            lat: 26.2124,  lng: 127.6809,  note: "Okinawa",           country: "Japan",          fi: "jp" },
-            { name: "Busan",           lat: 35.1796,  lng: 129.0756,  note: "",                  country: "South Korea",    fi: "kr" },
-            { name: "Jeju",            lat: 33.4996,  lng: 126.5312,  note: "",                  country: "South Korea",    fi: "kr",  photo: "Jeju.jpg" },
-            { name: "Ho Chi Minh City",lat: 10.8231,  lng: 106.6297,  note: "",                  country: "Vietnam",        fi: "vn",  photo: "Ho Chi Minh City.jpg" },
-            { name: "Bangkok",         lat: 13.7563,  lng: 100.5018,  note: "",                  country: "Thailand",       fi: "th" },
-            { name: "Pattaya",         lat: 12.9236,  lng: 100.8825,  note: "",                  country: "Thailand",       fi: "th" },
-            { name: "Koh Samui",       lat:  9.5120,  lng: 100.0136,  note: "",                  country: "Thailand",       fi: "th" },
-            { name: "Koh Tao",         lat: 10.0956,  lng:  99.8399,  note: "",                  country: "Thailand",       fi: "th" },
-            { name: "Kuala Lumpur",    lat:  3.1390,  lng: 101.6869,  note: "",                  country: "Malaysia",       fi: "my" },
-            { name: "Penang",          lat:  5.4164,  lng: 100.3327,  note: "",                  country: "Malaysia",       fi: "my" },
-            { name: "Langkawi",        lat:  6.3500,  lng:  99.8000,  note: "",                  country: "Malaysia",       fi: "my" },
-            { name: "Tioman Island",   lat:  2.8088,  lng: 104.1648,  note: "",                  country: "Malaysia",       fi: "my" },
-            { name: "Tenggol Island",  lat:  4.8033,  lng: 103.6711,  note: "",                  country: "Malaysia",       fi: "my" },
-            { name: "Kota Kinabalu",   lat:  5.9804,  lng: 116.0735,  note: "",                  country: "Malaysia",       fi: "my" },
-            { name: "Semporna",        lat:  4.4783,  lng: 118.6069,  note: "",                  country: "Malaysia",       fi: "my" },
-            { name: "Singapore",       lat:  1.3521,  lng: 103.8198,  note: "",                  country: "Singapore",      fi: "sg" },
-            { name: "Bintan Island",   lat:  1.0697,  lng: 104.5226,  note: "",                  country: "Indonesia",      fi: "id" },
-            { name: "Sydney",          lat: -33.8688, lng: 151.2093,  note: "",                  country: "Australia",      fi: "au" },
-            { name: "Melbourne",       lat: -37.8136, lng: 144.9631,  note: "",                  country: "Australia",      fi: "au",  photo: "Melbourne.jpg" },
-            { name: "New York City",   lat: 40.7128,  lng: -74.0060,  note: "",                  country: "United States",  fi: "us",  photo: "New York.jpg" },
-            { name: "Washington, D.C.",lat: 38.9072,  lng: -77.0369,  note: "",                  country: "United States",  fi: "us" },
-            { name: "Boston",          lat: 42.3601,  lng: -71.0589,  note: "",                  country: "United States",  fi: "us" },
-        ];
-
-        const lightTiles = "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
-        const darkTiles  = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
-        const attribution = '&copy; <a href="https://carto.com/">CARTO</a>';
-
-        const map = L.map('map', { zoomControl: true, scrollWheelZoom: false }).setView([30, 20], 2);
-        let tileLayer = L.tileLayer(
-            document.documentElement.classList.contains('dark') ? darkTiles : lightTiles,
-            { attribution, maxZoom: 18 }
-        ).addTo(map);
-
-        const dotIcon = (color) => L.divIcon({
-            className: '',
-            html: `<div style="width:10px;height:10px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 0 4px rgba(0,0,0,.4)"></div>`,
-            iconSize: [10, 10],
-            iconAnchor: [5, 5],
-        });
-
-        const markersByName = {};
-        cities.forEach(c => {
-            const marker = L.marker([c.lat, c.lng], { icon: dotIcon('#0066ff') }).addTo(map);
-            if (c.photo) {
-                marker.bindPopup(
-                    `<img src="/static/images/cities/${c.photo}" alt="${c.name}">
-                     <div class="popup-label">${c.name}${c.note ? `<span class="popup-note">${c.note}</span>` : ''}</div>`,
-                    { className: 'city-photo-popup', maxWidth: 210 }
-                );
-            } else {
-                marker.bindPopup(`<strong>${c.name}</strong>${c.note ? `<br><span style="color:#888;font-size:0.85em">${c.note}</span>` : ''}`);
-            }
-            markersByName[c.name] = marker;
-        });
-
-        // 生成城市列表（按国家折叠）
-        const grouped = {};
-        cities.forEach(c => {
-            if (!grouped[c.country]) grouped[c.country] = { fi: c.fi, cities: [] };
-            grouped[c.country].cities.push(c);
-        });
-
-        const listEl = document.getElementById('city-list');
-        Object.entries(grouped).forEach(([country, data]) => {
-            const section = document.createElement('div');
-            section.className = 'cl-section';
-            section.innerHTML = `
-                <button class="cl-header">
-                    <span class="fi fi-${data.fi} cl-flag"></span>
-                    <span class="cl-meta"><span class="cl-country">${country}</span><em class="cl-count">${data.cities.length}</em></span>
-                    <span class="cl-arrow">›</span>
-                </button>
-                <div class="cl-body">
-                    ${data.cities.map(c => `
-                        <span class="cl-city" data-lat="${c.lat}" data-lng="${c.lng}" data-name="${c.name}">
-                            ${c.name}${c.note ? `<em> · ${c.note}</em>` : ''}
-                        </span>`).join('')}
-                </div>`;
-            listEl.appendChild(section);
-        });
-
-        listEl.addEventListener('click', e => {
-            const header = e.target.closest('.cl-header');
-            const cityEl = e.target.closest('.cl-city');
-            if (header) {
-                header.parentElement.classList.toggle('cl-open');
-            } else if (cityEl) {
-                const marker = markersByName[cityEl.dataset.name];
-                map.flyTo([+cityEl.dataset.lat, +cityEl.dataset.lng], 10, { duration: 1 });
-                document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                if (marker) {
-                    map.once('moveend', () => marker.openPopup());
-                }
-            }
-        });
-
-    </script>
-
-    <script>
-        const toggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        const sunSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
-        const moonSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
-
-        if (localStorage.getItem('theme') === 'dark' ||
-            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-            toggle.innerHTML = sunSVG;
-        }
-
-        toggle.addEventListener('click', () => {
-            const isDark = html.classList.toggle('dark');
-            toggle.innerHTML = isDark ? sunSVG : moonSVG;
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            map.removeLayer(tileLayer);
-            tileLayer = L.tileLayer(isDark ? darkTiles : lightTiles, { attribution, maxZoom: 18 }).addTo(map);
-        });
-
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
-        const scrollSpy = () => {
-            let current = '';
-            sections.forEach(s => {
-                if (window.scrollY >= s.offsetTop - 120) current = s.id;
-            });
-            navLinks.forEach(a => {
-                a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
-            });
-        };
-        window.addEventListener('scroll', scrollSpy, { passive: true });
-        scrollSpy();
-
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        navToggle.addEventListener('click', () => {
-            const isOpen = navMenu.classList.toggle('open');
-            navToggle.setAttribute('aria-expanded', isOpen);
-        });
-        document.querySelectorAll('.nav-menu a').forEach(a => {
-            a.addEventListener('click', () => {
-                navMenu.classList.remove('open');
-                navToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
-    </script>
+    <footer class="container"><span>© <span id="current-year">2026</span> Yixiao Tao</span><a href="#hero">Back to top <span aria-hidden="true">↑</span></a></footer>
+    <dialog id="photo-dialog" aria-labelledby="photo-title"><button class="dialog-close icon-button" aria-label="Close photograph">×</button><img id="dialog-image" alt=""><div class="dialog-caption"><h2 id="photo-title"></h2><p id="photo-country"></p></div></dialog>
 </body>
 </html>

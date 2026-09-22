@@ -27,9 +27,13 @@ Live at **yixiao-tao.com** (Render → Cloudflare DNS).
 
 Single-page personal website with a FastAPI backend serving a Jinja2 template.
 
-- `main.py` — one route (`GET /`) returning `templates/index.html`
-- `templates/index.html` — entire site in one file: HTML structure + all JS (Leaflet map, city data, dark mode, scroll animations)
+- `main.py` — `GET /` renders `templates/index.html`; scans `static/images/cities/` on every request to discover gallery photos
+- `templates/index.html` — semantic page structure, project summaries, system diagram, and early theme initialization
+- `static/js/site.js` — navigation, theme, lazy-loaded Leaflet map, city search, photo dialog, and email copy
+- `static/js/cities.js` — shared travel data for markers, searchable country lists, and photo journal
 - `static/css/style.css` — all styles using CSS variables for dark/light mode theming
+- `templates/illustrations/` — inline SVGs: SAV-SLAM architecture and a data-derived LoopLens plot; use site theme variables
+- `scripts/draw_looplens.py` — regenerates the LoopLens chart from saved KITTI trajectories and ground truth (NumPy/Matplotlib, development only); also exports `static/images/projects/looplens-kitti00.svg`
 - `static/images/` — avatar, school logos (UCL SVG, XMUMY PNG, Xiaoshi PNG with transparent bg)
 - `static/files/` — CV PDFs (cv-en.pdf, cv-zh.pdf)
 
@@ -37,10 +41,16 @@ Single-page personal website with a FastAPI backend serving a Jinja2 template.
 
 **Dark mode** — toggled via `html.dark` class, persisted in `localStorage`, CSS variables handle all color switching.
 
-**City map** — Leaflet.js with CartoCD tiles. The `cities` array in `index.html` is the single source of truth for all map markers and the country accordion list. Each city has `{ name, lat, lng, note, country, fi }` where `fi` is the flag-icons country code.
+**City map** — Leaflet.js with OpenStreetMap standard tiles (URL configured on `#map`); CSS adapts the tile layer to dark mode. Keep visible attribution and default browser caching/referrer behavior per https://operations.osmfoundation.org/policies/tiles/. The `cities` array in `static/js/cities.js` supplies map markers, the searchable country accordion, travel counts, and country metadata for gallery photos. Each city has `{ name, lat, lng, note, country, fi, photo? }`; `fi` is a retained country code, and optional `photo` is a filename under `static/images/cities/`. Leaflet loads when the map enters the viewport; other interactions still work if the CDN is unavailable.
 
 **Starlette TemplateResponse** — uses the newer API: `templates.TemplateResponse(request=request, name="index.html")` (not the old context dict form).
 
 ## Adding Cities
 
-Add to the `cities` array in `index.html`. The accordion list is auto-generated from this array — no other changes needed.
+Add to the `cities` array in `static/js/cities.js`. The accordion list is auto-generated from this array — no other changes needed.
+
+## City Gallery
+
+Add JPG/JPEG, PNG, WebP, or AVIF files to `static/images/cities/` and refresh the page. The server scans this folder on each page request; filenames need no manual registration. Name photos after cities, e.g. `London.jpg` or `London-02.webp` for additional shots. Existing aliases such as `Tromso.jpg` and `New York.jpg` retain their city metadata. Unknown names still appear in the gallery without invented country or map coordinates; add a city to `cities.js` when those details are available. Adding a gallery photo does not automatically change the map popup photo.
+
+The gallery shows three photos per desktop view, with arrows and native touch scrolling. It never advances automatically. The first three featured cities are followed by the remaining photos alphabetically. Server code changes require restarting uvicorn unless it runs with `--reload`; new photo files only need a page refresh.
