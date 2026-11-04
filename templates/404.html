@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Page not found — Yixiao Tao</title>
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            document.documentElement.classList.toggle('dark', saved === 'dark' || (!saved && matchMedia('(prefers-color-scheme: dark)').matches));
+        } catch (_) { document.documentElement.classList.toggle('dark', matchMedia('(prefers-color-scheme: dark)').matches); }
+    </script>
+    <link rel="stylesheet" href="{{ static_url('css/style.css') }}">
+</head>
+<body>
+    <main class="container not-found">
+        <p class="eyebrow">404</p>
+        <h1>Page not found</h1>
+        <p>This page doesn't exist or has moved.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="/">Back to home</a></div>
+    </main>
+</body>
+</html>

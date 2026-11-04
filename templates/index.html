@@ -11,19 +11,46 @@
     <meta property="og:description" content="Exploring how robots see, hear, and understand the world. Projects, research, and a few places along the way.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yixiao-tao.com/">
-    <meta property="og:image" content="https://yixiao-tao.com/static/images/avatar.jpg">
+    <meta property="og:site_name" content="Yixiao Tao">
+    <meta property="og:image" content="https://yixiao-tao.com/static/images/og-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Yixiao Tao — Robotics &amp; AI at UCL">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f7f8f4" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#151c19" media="(prefers-color-scheme: dark)">
     <link rel="canonical" href="https://yixiao-tao.com/">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232d6556'/><text x='50' y='67' font-family='sans-serif' font-size='42' font-weight='700' fill='white' text-anchor='middle'>yt.</text></svg>">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="apple-touch-icon" href="/static/images/icons/apple-touch-icon.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yixiao Tao",
+        "alternateName": "陶邑潇",
+        "url": "https://yixiao-tao.com/",
+        "image": "https://yixiao-tao.com/static/images/avatar.jpg",
+        "email": "mailto:i@yixiao-tao.com",
+        "jobTitle": "Robotics and AI",
+        "knowsAbout": ["SLAM", "Computer vision", "Multimodal perception", "Robotics"],
+        "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "University College London" },
+            { "@type": "CollegeOrUniversity", "name": "Xiamen University Malaysia" }
+        ],
+        "sameAs": ["https://github.com/PchT4129", "https://www.linkedin.com/in/yixiao-tao-44935b260/"]
+    }
+    </script>
     <script>
         try {
             const saved = localStorage.getItem('theme');
             document.documentElement.classList.toggle('dark', saved === 'dark' || (!saved && matchMedia('(prefers-color-scheme: dark)').matches));
         } catch (_) { document.documentElement.classList.toggle('dark', matchMedia('(prefers-color-scheme: dark)').matches); }
     </script>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <script defer src="/static/js/cities.js"></script>
-    <script defer src="/static/js/site.js"></script>
+    <link rel="stylesheet" href="{{ static_url('css/style.css') }}">
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <script defer src="{{ static_url('js/cities.js') }}"></script>
+    <script defer src="{{ static_url('js/site.js') }}"></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -132,6 +159,6 @@
         <section id="contact" class="section" aria-labelledby="contact-title"><div class="contact-layout"><div><h2 id="contact-title">Contact</h2><a class="contact-email" href="mailto:i@yixiao-tao.com">i@yixiao-tao.com <span aria-hidden="true">↗</span></a></div><div class="contact-links"><a href="https://github.com/PchT4129" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/yixiao-tao-44935b260/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a><button id="copy-email" type="button">Copy email <span aria-hidden="true">⧉</span></button><span id="copy-status" role="status"></span></div></div></section>
     </main>
     <footer class="container"><span>© <span id="current-year">2026</span> Yixiao Tao</span><a href="#hero">Back to top <span aria-hidden="true">↑</span></a></footer>
-    <dialog id="photo-dialog" aria-labelledby="photo-title"><button class="dialog-close icon-button" aria-label="Close photograph">×</button><img id="dialog-image" alt=""><div class="dialog-caption"><h2 id="photo-title"></h2><p id="photo-country"></p></div></dialog>
+    <dialog id="photo-dialog" aria-labelledby="photo-title"><button class="dialog-close icon-button" aria-label="Close photograph">×</button><img id="dialog-image" alt=""><div class="dialog-caption"><div><h2 id="photo-title"></h2><p id="photo-country"></p></div><div class="dialog-nav" hidden><span id="dialog-position"></span><button type="button" id="dialog-prev" class="icon-button" aria-label="Previous photograph">←</button><button type="button" id="dialog-next" class="icon-button" aria-label="Next photograph">→</button></div></div></dialog>
 </body>
 </html>

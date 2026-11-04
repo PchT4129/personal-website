@@ -78,15 +78,39 @@
 
     const dialog = document.getElementById('photo-dialog');
     const dialogImage = document.getElementById('dialog-image');
-    const photoURL = city => `/static/images/cities/${encodeURIComponent(city.photo)}`;
+    const galleryFiles = JSON.parse(document.getElementById('gallery-data').textContent);
+    const thumbByFile = new Map(galleryFiles.filter(entry => entry.thumb).map(entry => [entry.file, entry.thumb]));
+    const cityImage = path => `/static/images/cities/${path.split('/').map(encodeURIComponent).join('/')}`;
+    const photoURL = city => cityImage(city.photo);
+    // Cards and popups use the small WebP made by scripts/make_thumbs.py when present.
+    const thumbURL = city => cityImage(thumbByFile.get(city.photo) || city.photo);
+    const dialogNav = dialog.querySelector('.dialog-nav');
+    const dialogPosition = document.getElementById('dialog-position');
+    let dialogIndex = -1;
+    let galleryPhotos = [];
     function showPhoto(city) {
+        dialogIndex = galleryPhotos.findIndex(photo => photo.photo === city.photo);
+        dialogNav.hidden = dialogIndex < 0 || galleryPhotos.length < 2;
+        if (dialogIndex >= 0) dialogPosition.textContent = `${dialogIndex + 1} / ${galleryPhotos.length}`;
         dialogImage.src = photoURL(city);
         dialogImage.alt = `${city.name} — travel photograph`;
         document.getElementById('photo-title').textContent = city.name;
         document.getElementById('photo-country').textContent = city.country;
-        dialog.showModal();
+        if (!dialog.open) dialog.showModal();
         document.body.style.overflow = 'hidden';
     }
+    function stepPhoto(direction) {
+        if (dialogIndex < 0 || galleryPhotos.length < 2) return;
+        showPhoto(galleryPhotos[(dialogIndex + direction + galleryPhotos.length) % galleryPhotos.length]);
+    }
+    document.getElementById('dialog-prev').addEventListener('click', () => stepPhoto(-1));
+    document.getElementById('dialog-next').addEventListener('click', () => stepPhoto(1));
+    dialog.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            stepPhoto(event.key === 'ArrowRight' ? 1 : -1);
+        }
+    });
     dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
     dialog.addEventListener('close', () => { document.body.style.overflow = ''; });
     dialog.addEventListener('click', event => {
@@ -106,8 +130,7 @@
         if (city.photo) cityByPhoto.set(galleryKey(photoStem(city.photo)), city);
     });
     const featuredCities = ['London', 'Tromsø', 'Tokyo'];
-    const galleryFiles = JSON.parse(document.getElementById('gallery-data').textContent);
-    const galleryPhotos = galleryFiles.map(filename => {
+    galleryPhotos = galleryFiles.map(({ file: filename }) => {
         const stem = photoStem(filename);
         const city = cityByPhoto.get(galleryKey(stem)) || cityByPhoto.get(galleryKey(stem.replace(/[-_ ]\d+$/, '')));
         return { name: city?.name || stem.replace(/_/g, ' '), country: city?.country || '', photo: filename };
@@ -121,7 +144,7 @@
         button.className = 'photo-card';
         button.setAttribute('aria-label', `View photograph of ${city.name}`);
         const photo = document.createElement('img');
-        photo.src = photoURL(city);
+        photo.src = thumbURL(city);
         photo.alt = [city.name, city.country].filter(Boolean).join(', ');
         photo.loading = 'lazy';
         photo.decoding = 'async';
@@ -265,8 +288,17 @@
     function loadMap() {
         if (mapReady) return mapReady;
         mapReady = new Promise(resolve => {
+            // Leaflet's stylesheet loads with the map instead of blocking first paint.
+            const stylesheet = document.createElement('link');
+            stylesheet.rel = 'stylesheet';
+            stylesheet.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+            stylesheet.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+            stylesheet.crossOrigin = '';
+            document.head.append(stylesheet);
             const script = document.createElement('script');
             script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+            script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+            script.crossOrigin = '';
             let settled = false;
             const timeout = setTimeout(fail, 12000);
             function fail() {
@@ -304,7 +336,7 @@
                     const popup = document.createElement('div');
                     if (city.photo) {
                         const img = document.createElement('img');
-                        img.src = photoURL(city);
+                        img.src = thumbURL(city);
                         img.alt = city.name;
                         img.loading = 'lazy';
                         popup.append(img);
