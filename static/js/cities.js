@@ -77,6 +77,8 @@ const cities = [
             { name: "Shantou",         lat: 23.3541,  lng: 116.6820,  note: "",                  country: "China",          fi: "cn" },
             { name: "Zhangzhou",       lat: 24.5132,  lng: 117.6471,  note: "",                  country: "China",          fi: "cn" },
             { name: "Xiamen",          lat: 24.4798,  lng: 118.0894,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Quanzhou",        lat: 24.8741,  lng: 118.6757,  note: "",                  country: "China",          fi: "cn" },
+            { name: "Fuzhou",          lat: 26.0745,  lng: 119.2965,  note: "",                  country: "China",          fi: "cn" },
             { name: "Sanya",           lat: 18.2524,  lng: 109.5120,  note: "",                  country: "China",          fi: "cn" },
             { name: "Haikou",          lat: 20.0440,  lng: 110.3419,  note: "",                  country: "China",          fi: "cn" },
             { name: "Wuzhishan",       lat: 18.7749,  lng: 109.5163,  note: "",                  country: "China",          fi: "cn" },
