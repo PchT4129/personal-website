@@ -62,20 +62,6 @@
     updateActiveSection();
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    const copyButton = document.getElementById('copy-email');
-    const copyStatus = document.getElementById('copy-status');
-    let copyTimeout;
-    copyButton.addEventListener('click', async () => {
-        clearTimeout(copyTimeout);
-        try {
-            await navigator.clipboard.writeText('i@yixiao-tao.com');
-            copyStatus.textContent = 'Email copied.';
-        } catch (_) {
-            copyStatus.textContent = 'Select to copy: i@yixiao-tao.com';
-        }
-        copyTimeout = setTimeout(() => { copyStatus.textContent = ''; }, 5000);
-    });
-
     const dialog = document.getElementById('photo-dialog');
     const dialogImage = document.getElementById('dialog-image');
     const galleryFiles = JSON.parse(document.getElementById('gallery-data').textContent);

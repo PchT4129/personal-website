@@ -111,26 +111,26 @@ def main():
     errors_after = np.linalg.norm(after - truth, axis=1)
     rmse_before, rmse_after = np.sqrt(np.mean(errors_before**2)), np.sqrt(np.mean(errors_after**2))
     print(f'{len(truth)} frames; ATE RMSE: {rmse_before:.3f} m → {rmse_after:.3f} m')
-    plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 11, 'svg.fonttype': 'none', 'svg.hashsalt': 'looplens-kitti00', 'axes.labelcolor': '#626e67', 'xtick.color': '#626e67', 'ytick.color': '#626e67', 'text.color': '#626e67'})
+    plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 11, 'svg.fonttype': 'none', 'svg.hashsalt': 'looplens-kitti00', 'axes.labelcolor': '#606060', 'xtick.color': '#606060', 'ytick.color': '#606060', 'text.color': '#606060'})
     fig = plt.figure(figsize=(6.2, 5.6))
     grid = fig.add_gridspec(2, 1, height_ratios=[3.1, 1], hspace=.52, top=.98, bottom=.12, left=.13, right=.97)
     route = fig.add_subplot(grid[0])
     error = fig.add_subplot(grid[1])
-    colors = {'truth': '#8c9690', 'before': '#af7048', 'after': '#2d6556'}
-    route.plot(truth[:, 0], truth[:, 2], color=colors['truth'], lw=3, alpha=.6)
-    route.plot(before[:, 0], before[:, 2], color=colors['before'], lw=1.35)
+    colors = {'truth': '#999999', 'before': '#666666', 'after': '#171717'}
+    route.plot(truth[:, 0], truth[:, 2], color=colors['truth'], lw=2.5, linestyle=':')
+    route.plot(before[:, 0], before[:, 2], color=colors['before'], lw=1.35, linestyle='--')
     route.plot(after[:, 0], after[:, 2], color=colors['after'], lw=1.35)
     route.set_aspect('equal')
     route.set(xlim=(-335, 340), ylim=(-45, 510), xlabel='x (m)', ylabel='z (m)')
     route.set_xticks([-300, 0, 300])
     route.set_yticks([0, 250, 500])
-    error.plot(errors_before, color=colors['before'], lw=1.25)
+    error.plot(errors_before, color=colors['before'], lw=1.25, linestyle='--')
     error.plot(errors_after, color=colors['after'], lw=1.25)
     error.set(xlim=(0, len(truth)-1), ylim=(0, 10), xlabel='Frame', ylabel='Error (m)')
     error.set_xticks([0, 2000, 4000])
     error.set_yticks([0, 5, 10])
     for axis in (route, error):
-        axis.grid(color='#dce1d9', linewidth=.65)
+        axis.grid(color='#dddddd', linewidth=.65)
         axis.set_axisbelow(True)
         axis.tick_params(length=0, labelsize=10, pad=5)
         for spine in axis.spines.values():
@@ -144,9 +144,9 @@ def main():
     svg = re.sub(r'width="[^"]+" height="[^"]+"', '', svg, count=1)
     svg = svg.replace('<svg ', '<svg class="project-diagram trajectory-diagram" role="img" aria-labelledby="looplens-plot-title looplens-plot-desc" ', 1)
     end = svg.index('>') + 1
-    svg = svg[:end] + '<title id="looplens-plot-title">KITTI 00 trajectory and translation error</title><desc id="looplens-plot-desc">Ground truth is grey, the trajectory before loop closure is orange, and the optimized trajectory is green. The lower plot shows per-frame translation error after rigid alignment, without rescaling. ATE RMSE decreases from 4.335 to 1.956 metres over 4541 frames.</desc>' + svg[end:]
+    svg = svg[:end] + '<title id="looplens-plot-title">KITTI 00 trajectory and translation error</title><desc id="looplens-plot-desc">Ground truth is a dotted grey line, the trajectory before loop closure is dashed, and the optimized trajectory is solid. All curves use neutral greys. The lower plot shows per-frame translation error after rigid alignment, without rescaling. ATE RMSE decreases from 4.335 to 1.956 metres over 4541 frames.</desc>' + svg[end:]
     svg = svg.replace('*{stroke-linejoin:', '.trajectory-diagram *{stroke-linejoin:')
-    for color, variable in {'#626e67': '--muted', '#dce1d9': '--border', '#8c9690': '--diagram-reference', '#af7048': '--diagram-warm', '#2d6556': '--accent'}.items():
+    for color, variable in {'#606060': '--muted', '#dddddd': '--border', '#999999': '--diagram-reference', '#666666': '--diagram-warm', '#171717': '--accent'}.items():
         svg = svg.replace(color, f'var({variable})')
     include.write_text(compact_svg(svg))
 

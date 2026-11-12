@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 SITE = Path(__file__).resolve().parents[1]
 ICONS = SITE / 'static' / 'images' / 'icons'
-BG, TEXT, MUTED, ACCENT, BORDER = '#f7f8f4', '#222e29', '#626e67', '#2d6556', '#dce1d9'
+BG, TEXT, MUTED, ACCENT, BORDER = '#ffffff', '#171717', '#606060', '#171717', '#dddddd'
 
 
 def font(font_dir, name, size):
