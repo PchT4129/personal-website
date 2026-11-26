@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yixiao Tao — Robotics &amp; AI</title>
-    <meta name="description" content="Yixiao Tao, Robotics and AI at UCL. Exploring how robots see, hear, and understand the world through SLAM and multimodal perception.">
+    <title>Yixiao Tao</title>
+    <meta name="description" content="Yixiao Tao — based in Hangzhou, working on 4D world models. Photos and places from my travels.">
     <meta name="author" content="Yixiao Tao">
     <meta name="google-site-verification" content="1t9ffpivfTRVIp48_q7Ijsk8BtLBLZb2WqBgg26s-q0">
-    <meta property="og:title" content="Yixiao Tao — Robotics &amp; AI">
-    <meta property="og:description" content="Exploring how robots see, hear, and understand the world. Projects, research, and a few places along the way.">
+    <meta property="og:title" content="Yixiao Tao">
+    <meta property="og:description" content="Based in Hangzhou. Photos and places from my travels.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yixiao-tao.com/">
     <meta property="og:site_name" content="Yixiao Tao">
     <meta property="og:image" content="https://yixiao-tao.com/static/images/og-card.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Yixiao Tao — Robotics &amp; AI at UCL">
+    <meta property="og:image:alt" content="Yixiao Tao">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
@@ -32,12 +32,6 @@
         "url": "https://yixiao-tao.com/",
         "image": "https://yixiao-tao.com/static/images/avatar.jpg",
         "email": "mailto:i@yixiao-tao.com",
-        "jobTitle": "Robotics and AI",
-        "knowsAbout": ["SLAM", "Computer vision", "Multimodal perception", "Robotics"],
-        "alumniOf": [
-            { "@type": "CollegeOrUniversity", "name": "University College London" },
-            { "@type": "CollegeOrUniversity", "name": "Xiamen University Malaysia" }
-        ],
         "sameAs": ["https://github.com/PchT4129", "https://www.linkedin.com/in/yixiao-tao-44935b260/"]
     }
     </script>
@@ -58,8 +52,6 @@
         <nav class="container" aria-label="Main navigation">
             <a class="logo" href="#hero" aria-label="Yixiao Tao, home">Yixiao</a>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
                 <li><a href="#cities">Footprints</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -75,64 +67,12 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 id="hero-title">Yixiao Tao</h1>
-                    <div class="hero-actions">
-                        <a class="resume-download" href="/static/files/cv-en.pdf" download="Yixiao_Tao_Resume.pdf" aria-label="Download English CV (PDF)"><span>CV (EN)</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg></a>
-                        <a class="resume-download" href="/static/files/cv-zh.pdf" download="陶邑潇_简历.pdf" lang="zh" aria-label="下载中文简历（PDF）"><span>中文简历</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg></a>
-                    </div>
+                    <p class="hero-description">Based in Hangzhou, working on 4D world models. Off-hours I travel and take photos — here are some of the places.</p>
                 </div>
                 <figure class="hero-portrait">
                     <div class="portrait-frame"><img src="/static/images/avatar.jpg" alt="Yixiao Tao by the sea" width="400" height="400" fetchpriority="high"></div>
                 </figure>
             </div>
-        </section>
-
-        <section id="projects" class="section" aria-labelledby="projects-title">
-            <div class="section-heading"><div><h2 id="projects-title">Projects</h2></div><a class="text-link" href="https://github.com/PchT4129" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></div>
-            <article class="project featured-project">
-                <div class="project-copy">
-                    <div class="project-meta"><span>MSc Dissertation</span><span class="status-label">Submitted</span></div>
-                    <h3>SAV-SLAM</h3>
-                    <p class="project-subtitle">Semantic audio-visual SLAM</p>
-                    <p>Semantic audio-visual SLAM that connects sound sources to physical objects. Built around an iPhone 16 Pro and a ~$60 four-microphone array.</p>
-                    <div class="tags"><span>Multimodal perception</span><span>VGGT-SLAM</span><span>CLAP</span><span>PyTorch</span></div>
-                    <div class="project-actions"><a class="text-link" href="https://github.com/PchT4129/sav-slam" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></div>
-                    <details class="project-details"><summary>How it works <span aria-hidden="true">+</span></summary><p>VGGT-SLAM and YOLO build an object-centric map; CLAP and text-prompted separation discover sound streams. A shared time-frequency mask weights the raw microphone channels while preserving relative phase. SRP-PHAT bearings are mapped into image columns for attribution and source discovery. The system reports ambiguous or unattributed streams when evidence is insufficient; objects sharing a bearing remain a known limitation.</p></details>
-                </div>
-                <figure class="project-visual sav-visual" aria-labelledby="sav-figure-title">
-                    <figcaption id="sav-figure-title" class="figure-title">Sound-to-object attribution</figcaption>
-                    {% include 'illustrations/sav-slam.svg' %}
-                    <p class="figure-note">Schematic · direction resolves candidates or guides source discovery.</p>
-                </figure>
-            </article>
-            <article class="project vpr-project">
-                <div class="project-copy">
-                    <div class="project-meta"><span>Independent Project</span><span>SLAM / Robotics</span></div>
-                    <h3>LoopLens</h3>
-                    <p class="project-subtitle">Visual loop closure &amp; pose-graph optimization</p>
-                    <p>Detects revisited places, estimates relative poses, and corrects trajectory drift. Combines DINOv2 retrieval, DISK + LightGlue matching, stereo-depth PnP, and a custom SE(3) pose-graph optimizer.</p>
-                    <div class="tags"><span>DINOv2</span><span>LightGlue</span><span>PnP + RANSAC</span><span>SE(3)</span></div>
-                    <div class="project-actions"><a class="text-link" href="https://github.com/PchT4129/vpr-loop-closure" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></div>
-                    <details class="project-details"><summary>Implementation &amp; evaluation <span aria-hidden="true">+</span></summary><p>Implemented a sparse Gauss–Newton optimizer on SE(3), including Lie-group updates, analytical Jacobians, and separate translation and rotation weights. Loop constraints come from stereo depth and geometrically verified image matches.</p><p>Evaluated offline on all 4,541 frames of KITTI 00, using an ORB-SLAM3 stereo trajectory with its loop-closing thread disabled. ATE RMSE is measured after rigid alignment without scale correction. These results cover one sequence; online operation has not been evaluated.</p><p>A separate Gardens Point study compares CNN and transformer retrieval, causal sequence matching, and geometric verification. Acceptance thresholds are fitted on validation data and frozen before test, keeping ranking improvements separate from acceptance reliability.</p></details>
-                </div>
-                <figure class="project-visual looplens-visual" aria-labelledby="looplens-figure-title">
-                    <figcaption id="looplens-figure-title" class="figure-title">Loop closure on KITTI 00</figcaption>
-                    <ol class="figure-pipeline" aria-label="LoopLens processing stages"><li>Retrieve</li><li>Verify + PnP</li><li>Optimize</li></ol>
-                    <div class="plot-legend" aria-label="Trajectory legend"><span class="legend-truth">Ground truth</span><span class="legend-before">Before</span><span class="legend-after">After</span></div>
-                    {% include 'illustrations/looplens.svg' %}
-                    <div class="figure-metrics"><div><strong>55%<small> lower ATE RMSE</small></strong><p>4.335 m → 1.956 m</p></div><div><strong>97%<small> ground-truth distance &lt; 5 m</small></strong><p>763 accepted loop pairs</p></div></div>
-                    <p class="figure-note">Recorded trajectories · rigid alignment · single-sequence offline evaluation.</p>
-                </figure>
-            </article>
-        </section>
-
-        <section id="about" class="section" aria-labelledby="about-title">
-            <div class="about-layout"><div class="about-intro"><h2 id="about-title">About</h2><p>I work on spatial intelligence, and the part of robotics where large models meet geometry.</p></div>
-            <div class="education"><h3 class="small-label">EDUCATION</h3>
-                <div class="education-item"><span class="education-logo"><img src="/static/images/ucl-logo-new.jpg" alt="" width="58" height="40" loading="lazy"></span><div><span class="year">2025 — 2026</span><h4>University College London</h4><p>MSc Robotics and Artificial Intelligence</p></div></div>
-                <div class="education-item"><span class="education-logo"><img src="/static/images/xmumy-logo-new.svg" alt="" width="58" height="40" loading="lazy"></span><div><span class="year">2021 — 2025</span><h4>Xiamen University Malaysia</h4><p>BEng Computer Science and Technology</p></div></div>
-                <div class="education-item"><span class="education-logo"><img src="/static/images/xiaoshi-logo-new.png" alt="" width="48" height="40" loading="lazy"></span><div><span class="year">2018 — 2021</span><h4>Ningbo Xiaoshi High School</h4></div></div>
-            </div></div>
-            <div id="skills" class="skills-grid"><div><h3 class="small-label">LANGUAGES</h3><p>Python · C++ · Java</p></div><div><h3 class="small-label">FRAMEWORKS &amp; TOOLS</h3><p>PyTorch · React · FastAPI · Docker</p></div><div><h3 class="small-label">ROBOTICS &amp; PERCEPTION</h3><p>SLAM · Computer vision · Multimodal perception · Motion planning · MPC · Kalman filtering · Legged robotics</p></div></div>
         </section>
 
         <section id="cities" class="section" aria-labelledby="cities-title">
@@ -148,8 +88,6 @@
             <script id="gallery-data" type="application/json">{{ gallery_photos | tojson }}</script>
             <div class="map-toolbar"><div id="travel-stats" class="travel-stats" aria-live="polite">Places I've been</div><button id="reset-map" class="text-link" type="button" hidden>Reset map <span aria-hidden="true">↗</span></button></div>
             <div id="map" data-tile-url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" role="region" aria-label="Interactive map of visited cities"><p class="map-status" role="status">Loading the travel map…</p></div>
-            <div class="city-toolbar"><label class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg><input id="city-search" type="search" placeholder="Find a city or country…" aria-label="Search cities, countries, or regions"></label><span id="search-status" role="status"></span></div>
-            <div id="city-list"></div>
             <noscript><p class="no-script-note">Enable JavaScript to explore the interactive map and travel photographs.</p></noscript>
         </section>
 

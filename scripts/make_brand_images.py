@@ -39,10 +39,10 @@ def share_card(font_dir):
     top = (height - portrait) // 2
     card.paste(avatar, (left, top))
     x = margin
-    draw.text((x, 150), 'ROBOTICS & AI  ·  UCL', font=font(font_dir, 'dejavu/DejaVuSansMono.ttf', 22), fill=ACCENT)
+    draw.text((x, 150), 'HANGZHOU  ·  PHOTOS & PLACES', font=font(font_dir, 'dejavu/DejaVuSansMono.ttf', 22), fill=ACCENT)
     draw.text((x, 196), 'Yixiao Tao', font=font(font_dir, 'lato/Lato-Bold.ttf', 96), fill=TEXT)
     body = font(font_dir, 'lato/Lato-Regular.ttf', 32)
-    for index, line in enumerate(['How robots see, hear, and understand', 'their surroundings: SLAM, vision and', 'multimodal perception.']):
+    for index, line in enumerate(['Working on 4D world models.', 'Off-hours, travelling and', 'taking photos.']):
         draw.text((x, 330 + index * 46), line, font=body, fill=MUTED)
     draw.line((x, height - 112, left - 60, height - 112), fill=BORDER, width=2)
     draw.text((x, height - 92), 'yixiao-tao.com', font=font(font_dir, 'dejavu/DejaVuSansMono.ttf', 24), fill=ACCENT)

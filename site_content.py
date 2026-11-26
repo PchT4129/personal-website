@@ -14,13 +14,13 @@ SITE_URL = "https://yixiao-tao.com"
 mimetypes.add_type("image/webp", ".webp")
 mimetypes.add_type("image/avif", ".avif")
 
-# Leaflet, flags and OSM tiles are the only third-party origins. Inline styles are
-# needed by Leaflet and the Matplotlib SVG; the inline script sets the theme early.
+# Leaflet and OSM tiles are the only third-party origins. Inline styles are
+# needed by Leaflet; the inline script sets the theme early.
 CSP = "; ".join([
     "default-src 'self'",
     "script-src 'self' 'unsafe-inline' https://unpkg.com",
     "style-src 'self' 'unsafe-inline' https://unpkg.com",
-    "img-src 'self' data: https://tile.openstreetmap.org https://cdn.jsdelivr.net https://unpkg.com",
+    "img-src 'self' data: https://tile.openstreetmap.org https://unpkg.com",
     "font-src 'self'",
     "connect-src 'self'",
     "object-src 'none'",

@@ -5,7 +5,6 @@
     const themeToggle = document.getElementById('theme-toggle');
     let map;
     let tiles;
-    const markers = new Map();
     const updateTheme = () => {
         const dark = root.classList.contains('dark');
         themeToggle.setAttribute('aria-pressed', String(dark));
@@ -196,78 +195,13 @@
     updateGallery();
     const countries = new Set(cities.map(city => city.country));
     document.getElementById('travel-stats').innerHTML = `<strong>${cities.length}</strong> places <span aria-hidden="true"> / </span> <strong>${countries.size}</strong> countries &amp; regions`;
-    const list = document.getElementById('city-list');
-    const search = document.getElementById('city-search');
-    const searchStatus = document.getElementById('search-status');
     const mapElement = document.getElementById('map');
     let mapReady;
-    let mapUnavailable = false;
-    const openedCountries = new Set();
-    const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ø/g, 'o').toLowerCase();
-    function renderCities() {
-        const query = normalize(search.value.trim());
-        const filtered = cities.filter(city => normalize(`${city.name} ${city.country} ${city.note}`).includes(query));
-        const groups = new Map();
-        filtered.forEach(city => {
-            if (!groups.has(city.country)) groups.set(city.country, []);
-            groups.get(city.country).push(city);
-        });
-        list.replaceChildren();
-        groups.forEach((group, country) => {
-            const details = document.createElement('details');
-            details.className = 'country-group';
-            details.open = Boolean(query) || openedCountries.has(country);
-            const summary = document.createElement('summary');
-            const flag = document.createElement('img');
-            flag.className = 'country-flag';
-            flag.src = `https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/${group[0].fi}.svg`;
-            flag.alt = '';
-            flag.setAttribute('aria-hidden', 'true');
-            flag.width = 20;
-            flag.height = 15;
-            flag.loading = 'lazy';
-            const name = document.createElement('span');
-            name.textContent = country;
-            const count = document.createElement('span');
-            count.className = 'country-count';
-            count.textContent = group.length;
-            count.setAttribute('aria-label', `${group.length} places`);
-            summary.append(flag, name, count);
-            const buttons = document.createElement('div');
-            buttons.className = 'city-buttons';
-            group.forEach(city => {
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.className = 'city-button';
-                button.textContent = city.name;
-                if (city.note) {
-                    const note = document.createElement('small');
-                    note.textContent = ` · ${city.note}`;
-                    button.append(note);
-                }
-                button.addEventListener('click', () => focusCity(city));
-                buttons.append(button);
-            });
-            details.append(summary, buttons);
-            details.addEventListener('toggle', () => {
-                if (!query && details.isConnected) {
-                    if (details.open) openedCountries.add(country);
-                    else openedCountries.delete(country);
-                }
-            });
-            list.append(details);
-        });
-        searchStatus.textContent = query ? `${filtered.length} ${filtered.length === 1 ? 'place' : 'places'} found` : '';
-    }
-    renderCities();
-    search.addEventListener('input', renderCities);
-
     function mapFallback() {
-        mapUnavailable = true;
         mapElement.replaceChildren();
         const message = document.createElement('p');
         message.className = 'map-status';
-        message.textContent = 'The map is unavailable. You can still browse all places below and open the travel photographs above.';
+        message.textContent = 'The map is unavailable. The travel photographs above still work.';
         message.setAttribute('role', 'status');
         mapElement.append(message);
     }
@@ -339,7 +273,6 @@
                     popup.append(label);
                     const marker = L.marker([city.lat, city.lng], { icon, title: city.name, alt: city.name }).addTo(map);
                     marker.bindPopup(popup, { className: city.photo ? 'city-photo-popup' : '', maxWidth: 230 });
-                    markers.set(city.name, marker);
                 });
                 document.getElementById('reset-map').hidden = false;
                 resolve(true);
@@ -348,26 +281,7 @@
         });
         return mapReady;
     }
-    let focusRequest = 0;
-    async function focusCity(city) {
-        const request = ++focusRequest;
-        if (!mapUnavailable) await loadMap();
-        if (request !== focusRequest) return;
-        if (!map) {
-            if (city.photo) showPhoto(city);
-            else searchStatus.textContent = `${city.name} · ${city.country}`;
-            return;
-        }
-        map.stop();
-        map.closePopup();
-        const marker = markers.get(city.name);
-        // setView avoids races when users choose several cities in quick succession.
-        map.setView([city.lat, city.lng], 10, { animate: false });
-        marker.openPopup();
-        mapElement.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'center' });
-    }
     document.getElementById('reset-map').addEventListener('click', () => {
-        focusRequest++;
         if (!map) return;
         map.closePopup();
         map.setView([28, 35], 2, { animate: !reducedMotion.matches });
